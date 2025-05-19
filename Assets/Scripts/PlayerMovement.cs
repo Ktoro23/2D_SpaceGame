@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         boostAction = InputSystem.actions.FindAction("Sprint");
         energy = maxEnergy;
+        UIController.Instance.updateEnergySlider(energy, maxEnergy);
     }
 
     // Update is called once per frame
@@ -79,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
                 energy += energyRegen;
             }
         }
+        UIController.Instance.updateEnergySlider(energy, maxEnergy);
     }
     public void Move(InputAction.CallbackContext context)
     {

@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - LevelBounaries
+  - Obsticale
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1499509603
+    locked: 0
+  - name: Obsticels
+    uniqueID: 1776634855
     locked: 0
   - name: Player
     uniqueID: 1444830961
