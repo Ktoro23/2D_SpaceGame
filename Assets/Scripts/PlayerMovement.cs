@@ -7,15 +7,22 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
     public Rigidbody2D rb;
+    private Vector2 playerDirection;
+
     public float moveSpeed = 5f;
     public float boost = 1f;
     private float boostPower = 5f;
+    private bool boosting = false;
 
     private Vector2 moveInput;
 
     InputAction boostAction;
 
     float horizontalMovement;
+
+    [SerializeField] private float energy;
+    [SerializeField] private float maxEnergy;
+    [SerializeField] private float energyRegen;
 
 
     void Awake()
@@ -36,18 +43,42 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         boostAction = InputSystem.actions.FindAction("Sprint");
+        energy = maxEnergy;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = moveInput * moveSpeed;
+        
         animator.SetFloat("moveX", moveInput.x);
         animator.SetFloat("moveY", moveInput.y);
 
         Boost();
+       
+     
 
 
+    }
+
+    private void FixedUpdate()
+    {
+        // rb.linearVelocity = new Vector2(playerDirection.x * moveSpeed, playerDirection.y * moveSpeed);
+        rb.linearVelocity = moveInput * moveSpeed;
+        if (boosting)
+        {
+           if (energy >= 0.2f) energy -= 0.2f;
+            else
+            {
+                ExitBoost();
+            }
+        }
+        else
+        {
+            if(energy < maxEnergy)
+            {
+                energy += energyRegen;
+            }
+        }
     }
     public void Move(InputAction.CallbackContext context)
     {
@@ -56,15 +87,28 @@ public class PlayerMovement : MonoBehaviour
 
     public void Boost()
     {
+        
         if (boostAction.IsPressed())
         {
-            boost = boostPower;
-            animator.SetBool("boosting", true);
+            if(energy > 10f)
+            {
+                boost = boostPower;
+                animator.SetBool("boosting", true);
+                boosting = true;
+            }
+            
         }
         else
         {
-            animator.SetBool("boosting", false);
-            boost = 1f;
+            ExitBoost();
         }
+       
+    }
+
+    public void ExitBoost()
+    {
+        animator.SetBool("boosting", false);
+        boost = 1f;
+        boosting = false;
     }
 }

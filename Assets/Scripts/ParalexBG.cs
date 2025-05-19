@@ -13,7 +13,7 @@ public class ParalaxBG : MonoBehaviour
 
     void Update()
     {
-        float moveX = moveSpeed * (PlayerMovement.Instance.boost) * Time.deltaTime;
+        float moveX = (moveSpeed * PlayerMovement.Instance.boost) * Time.deltaTime;
         transform.position += new Vector3(moveX, 0);
         if (Mathf.Abs(transform.position.x) - backgroundImageWidth > 0)
         {
