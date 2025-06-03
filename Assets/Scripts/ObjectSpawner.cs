@@ -7,27 +7,43 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private Transform maxPos;
 
     [SerializeField] private int waveNumber;
-    [SerializeField] private List
+    [SerializeField] private List <Wave> waves ;
 
 
-    public GameObject preFabs;
-    public float spawnTimer;
-    public float spawnInterval;
-   
+
+    [System.Serializable]
+    public class Wave
+    {
+        public GameObject preFabs;
+        public float spawnTimer;
+        public float spawnInterval;
+        public int objectsPerWave;
+        public int spawnObjectCount;
+    }
     // Update is called once per frame
     void Update()
     {
-        spawnTimer += Time.deltaTime * PlayerMovement.Instance.boost;
-        if(spawnTimer >= spawnInterval)
+        waves[waveNumber].spawnTimer += Time.deltaTime * PlayerMovement.Instance.boost;
+        if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval)
         {
-            spawnTimer = 0;
-            SpawnObject();
+               waves[waveNumber].spawnTimer = 0;
+               SpawnObject();
+        }
+        if (waves[waveNumber].spawnObjectCount >= waves[waveNumber].objectsPerWave)
+        {
+            waves[waveNumber].spawnObjectCount = 0;
+            waveNumber++;   
+            if (waveNumber >= waves.Count)
+            {
+                waveNumber = 0;
+            }
         }
     }
 
     private void SpawnObject()
     {
-        Instantiate(preFabs, RandomSpawnPoint(), transform.rotation);
+        Instantiate(waves[waveNumber].preFabs, RandomSpawnPoint(), transform.rotation);
+        waves[waveNumber].spawnObjectCount++;
     }
 
     private Vector2 RandomSpawnPoint()
