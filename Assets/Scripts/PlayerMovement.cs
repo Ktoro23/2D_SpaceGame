@@ -57,13 +57,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        animator.SetFloat("moveX", moveInput.x);
-        animator.SetFloat("moveY", moveInput.y);
+       if (Time.timeScale > 0 )
+       {
+            animator.SetFloat("moveX", moveInput.x);
+            animator.SetFloat("moveY", moveInput.y);
+            Boost();
 
-        Boost();
-       
-     
+       }    
 
 
     }

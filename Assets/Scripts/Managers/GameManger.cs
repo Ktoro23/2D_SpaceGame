@@ -30,16 +30,19 @@ public class GameManger : MonoBehaviour
         
     }
 
-    private void Paused(InputAction.CallbackContext context)
+    public void Paused(InputAction.CallbackContext context)
     {
         
         if (UIController.Instance.pausePanel.activeSelf == false)
         {
             UIController.Instance.pausePanel.SetActive(true);
+            Time.timeScale = 0f;
         }
         else
         {
             UIController.Instance.pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+            PlayerMovement.Instance.ExitBoost();
         }
 
     }
@@ -54,5 +57,22 @@ public class GameManger : MonoBehaviour
         action.Disable();
     }
 
+    public void Pause()
+    {
+        if (UIController.Instance.pausePanel.activeSelf == false)
+        {
+            UIController.Instance.pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            UIController.Instance.pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
