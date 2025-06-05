@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject destroyEffect;
 
+    [SerializeField] AudioClip OnDeathSound;
+
 
     void Awake()
     {
@@ -136,8 +138,11 @@ public class PlayerMovement : MonoBehaviour
         if (health <= 0)
         {
             boost = 0f;
+            SoundsFXManager.Instance.PlaySoundFXClip(OnDeathSound, 50);
             gameObject.SetActive(false);
             Instantiate(destroyEffect,transform.position, transform.rotation);
+            GameManger.Instance.GameOver();
+            
         }
     }
 }
