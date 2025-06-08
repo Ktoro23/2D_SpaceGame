@@ -171,3 +171,4 @@ MonoBehaviour:
   - {fileID: -43423241, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -1813894850, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -1565229668, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
+  whiteMaterial: {fileID: 2100000, guid: 2cbf7c62b15e2594b9284990e333bdaf, type: 2}

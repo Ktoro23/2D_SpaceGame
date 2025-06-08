@@ -36,11 +36,15 @@ public class GameManger : MonoBehaviour
         
         if (UIController.Instance.pausePanel.activeSelf == false)
         {
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Pause, 1f);
+
             UIController.Instance.pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.unPause, 1f);
+
             UIController.Instance.pausePanel.SetActive(false);
             Time.timeScale = 1f;
             PlayerMovement.Instance.ExitBoost();
@@ -69,6 +73,7 @@ public class GameManger : MonoBehaviour
         {
             UIController.Instance.pausePanel.SetActive(false);
             Time.timeScale = 1f;
+           
         }
     }
 

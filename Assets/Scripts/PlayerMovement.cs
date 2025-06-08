@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
@@ -8,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public Rigidbody2D rb;
     private Vector2 playerDirection;
+    private SpriteRenderer spriteRenderer;
+
+    private Material defaultMaterial;
+    [SerializeField] private Material whiteMaterial;
 
     public float moveSpeed = 5f;
     public float boost = 1f;
@@ -29,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject destroyEffect;
 
-    [SerializeField] AudioClip OnDeathSound;
+    //[SerializeField] AudioClip OnDeathSound;
+
 
 
     void Awake()
@@ -48,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        defaultMaterial = spriteRenderer.material;
 
         boostAction = InputSystem.actions.FindAction("Sprint");
         energy = maxEnergy;
@@ -65,7 +74,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("moveY", moveInput.y);
             Boost();
 
-       }    
+       }
+        if (boostAction.WasPressedThisFrame())
+        {
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
+        }
 
 
     }
@@ -101,8 +114,10 @@ public class PlayerMovement : MonoBehaviour
         
         if (boostAction.IsPressed())
         {
-            if(energy > 10f)
+           
+            if (energy > 10f)
             {
+                
                 boost = boostPower;
                 animator.SetBool("boosting", true);
                 boosting = true;
@@ -135,14 +150,23 @@ public class PlayerMovement : MonoBehaviour
     {
         health -= damage;
         UIController.Instance.updateHealthSlider(health, maxHealth);
+        SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Hit, 1f);
+        spriteRenderer.material = whiteMaterial;
+        StartCoroutine("ResetMaterial");
         if (health <= 0)
         {
             boost = 0f;
-            SoundsFXManager.Instance.PlaySoundFXClip(OnDeathSound, 50);
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.OnDeathSound, 1f);
             gameObject.SetActive(false);
             Instantiate(destroyEffect,transform.position, transform.rotation);
             GameManger.Instance.GameOver();
             
         }
+    }
+
+    IEnumerator ResetMaterial()
+    {
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.material = defaultMaterial;
     }
 }
