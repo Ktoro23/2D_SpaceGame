@@ -16,12 +16,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     public float boost = 1f;
-    private float boostPower = 5f;
+    private float boostPower = 4f;
     private bool boosting = false;
 
     private Vector2 moveInput;
 
     InputAction boostAction;
+
+    private PlayerInput playerInput;
+    private InputAction shootAction;
 
     float horizontalMovement;
 
@@ -33,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxHealth;
 
     [SerializeField] private GameObject destroyEffect;
+
+    [SerializeField] private ParticleSystem engineEffect;
 
     //[SerializeField] AudioClip OnDeathSound;
 
@@ -48,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Instance = this;
         }
+
+        playerInput = GetComponent<PlayerInput>();
+        shootAction = playerInput.actions["Shoot"];
     }
         
     void Start()
@@ -68,19 +76,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Time.timeScale > 0 )
-       {
+        if (Time.timeScale > 0 )
+        {
+            moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
             animator.SetFloat("moveX", moveInput.x);
             animator.SetFloat("moveY", moveInput.y);
             Boost();
 
-       }
-        if (boostAction.WasPressedThisFrame())
-        {
-            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
         }
+     
 
-
+        Debug.Log("moveInput: " + moveInput);
     }
 
     private void FixedUpdate()
@@ -104,10 +110,10 @@ public class PlayerMovement : MonoBehaviour
         }
         UIController.Instance.updateEnergySlider(energy, maxEnergy);
     }
-    public void Move(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }
+   // public void Move(InputAction.CallbackContext context)
+   // {
+   //     moveInput = context.ReadValue<Vector2>();
+  //  }
 
     public void Boost()
     {
@@ -121,12 +127,14 @@ public class PlayerMovement : MonoBehaviour
                 boost = boostPower;
                 animator.SetBool("boosting", true);
                 boosting = true;
+                engineEffect.Play();
+               // SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
             }
             
         }
         else
         {
-            ExitBoost();
+            ExitBoost();           
         }
        
     }
@@ -136,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("boosting", false);
         boost = 1f;
         boosting = false;
+        engineEffect.Stop();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -168,5 +177,19 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.material = defaultMaterial;
+    }
+
+    void OnShoot (InputAction.CallbackContext context)
+    {       
+        PhaserWeapon.Instance.Shoot();
+    }
+    void OnEnable()
+    {
+        shootAction.performed += OnShoot;
+    }
+
+    void OnDisable()
+    {
+        shootAction.performed -= OnShoot;
     }
 }
