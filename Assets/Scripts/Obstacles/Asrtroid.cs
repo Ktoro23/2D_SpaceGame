@@ -4,12 +4,19 @@ using System.Collections;
 public class Asrtroid : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject desroyEffect;
+    [SerializeField] private int lives;
 
-    [SerializeField] private Sprite[] sprites;
     private Rigidbody2D rb;
 
     private Material defaultMaterial;
     [SerializeField] private Material whiteMaterial;
+
+    [SerializeField] AudioClip[] rockHit;
+
+    [SerializeField] private Sprite[] sprites;
+
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,6 +27,9 @@ public class Asrtroid : MonoBehaviour
         float pushY = Random.Range(-1f, 1);
 
         rb.linearVelocity = new Vector2(pushX, pushY);
+
+        float randomScale = Random.Range(0.4f, 1f);
+        transform.localScale = new Vector2(randomScale, randomScale);
        
     }
 
@@ -40,6 +50,14 @@ public class Asrtroid : MonoBehaviour
         {
             spriteRenderer.material = whiteMaterial;
             StartCoroutine("ResetMaterial");
+            SoundsFXManager.Instance.PlayRandomSoundFXClip(rockHit, transform, 1f);
+            lives--;
+            if(lives <= 0)
+            {
+                Instantiate(desroyEffect, transform.position, transform.rotation);
+                SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
+                Destroy(gameObject);
+            }
         }
     }
 

@@ -165,10 +165,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3442c007a15ef498f3fd958ce53da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  desroyEffect: {fileID: 5797474227463317545, guid: badb56ec3ba09384b91059faf78a2968, type: 3}
+  lives: 5
+  whiteMaterial: {fileID: 2100000, guid: 2cbf7c62b15e2594b9284990e333bdaf, type: 2}
+  rockHit:
+  - {fileID: 8300000, guid: b35485d4d4010b344ba17408b203d16b, type: 3}
+  - {fileID: 8300000, guid: 2c22976dcdc13fc4484a573984a3e0bc, type: 3}
+  - {fileID: 8300000, guid: 5fb4d61547df0a041996d1375abd3ba0, type: 3}
   sprites:
   - {fileID: 1443781010, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: 303243389, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -43423241, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -1813894850, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -1565229668, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
-  whiteMaterial: {fileID: 2100000, guid: 2cbf7c62b15e2594b9284990e333bdaf, type: 2}

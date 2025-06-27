@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction shootAction;
 
+
     float horizontalMovement;
 
     [SerializeField] private float energy;
@@ -56,8 +57,9 @@ public class PlayerMovement : MonoBehaviour
 
         playerInput = GetComponent<PlayerInput>();
         shootAction = playerInput.actions["Shoot"];
+        boostAction = InputSystem.actions.FindAction("Sprint");
     }
-        
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -66,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         defaultMaterial = spriteRenderer.material;
 
-        boostAction = InputSystem.actions.FindAction("Sprint");
+
         energy = maxEnergy;
         UIController.Instance.updateEnergySlider(energy, maxEnergy);
         health = maxHealth;
@@ -76,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale > 0 )
+        if (Time.timeScale > 0)
         {
             moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
             animator.SetFloat("moveX", moveInput.x);
@@ -84,9 +86,7 @@ public class PlayerMovement : MonoBehaviour
             Boost();
 
         }
-     
 
-        Debug.Log("moveInput: " + moveInput);
     }
 
     private void FixedUpdate()
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = moveInput * moveSpeed;
         if (boosting)
         {
-           if (energy >= 0.2f) energy -= 0.2f;
+            if (energy >= 0.2f) energy -= 0.2f;
             else
             {
                 ExitBoost();
@@ -103,40 +103,39 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if(energy < maxEnergy)
+            if (energy < maxEnergy)
             {
                 energy += energyRegen;
             }
         }
         UIController.Instance.updateEnergySlider(energy, maxEnergy);
     }
-   // public void Move(InputAction.CallbackContext context)
-   // {
-   //     moveInput = context.ReadValue<Vector2>();
-  //  }
+    // public void Move(InputAction.CallbackContext context)
+    // {
+    //     moveInput = context.ReadValue<Vector2>();
+    //  }
 
     public void Boost()
     {
-        
+
         if (boostAction.IsPressed())
         {
-           
+
             if (energy > 10f)
             {
-                
+
                 boost = boostPower;
                 animator.SetBool("boosting", true);
                 boosting = true;
-                engineEffect.Play();
-               // SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
+
             }
-            
+
         }
         else
         {
-            ExitBoost();           
+            ExitBoost();
         }
-       
+
     }
 
     public void ExitBoost()
@@ -167,9 +166,9 @@ public class PlayerMovement : MonoBehaviour
             boost = 0f;
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.OnDeathSound, 1f);
             gameObject.SetActive(false);
-            Instantiate(destroyEffect,transform.position, transform.rotation);
+            Instantiate(destroyEffect, transform.position, transform.rotation);
             GameManger.Instance.GameOver();
-            
+
         }
     }
 
@@ -179,17 +178,30 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.material = defaultMaterial;
     }
 
-    void OnShoot (InputAction.CallbackContext context)
-    {       
+    void OnShoot(InputAction.CallbackContext context)
+    {
         PhaserWeapon.Instance.Shoot();
     }
     void OnEnable()
     {
         shootAction.performed += OnShoot;
+        boostAction.performed += OnBoost;
+        boostAction.Enable();
     }
 
     void OnDisable()
     {
         shootAction.performed -= OnShoot;
+        boostAction.performed -= OnBoost;
+    }
+
+    void OnBoost(InputAction.CallbackContext context)
+    {
+        if (energy > 10f)
+        {
+            Debug.Log("adad");
+            engineEffect.Play();
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
+        }
     }
 }

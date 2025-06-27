@@ -11,6 +11,9 @@ public class SoundsFXManager : MonoBehaviour
     public AudioClip Pause;
     public AudioClip unPause;
     public AudioClip Hit;
+    public AudioClip boom2;
+   // public AudioClip hitRock;
+    public AudioClip shoot;
 
 
 
@@ -71,6 +74,28 @@ public class SoundsFXManager : MonoBehaviour
         audioSource.Play();
 
         float clipLength = audioSource == null ? 0f : audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, clipLength);
+    }
+
+    public void PlaySoundFXClip(AudioClip audioClip, float volume, float pitch)
+    {
+        if (audioClip == null) return;
+
+        AudioSource audioSource = Instantiate(soundFXObject);
+
+        audioSource.clip = audioClip;
+
+        audioSource.volume = volume;
+
+        audioSource.pitch = Random.Range(0.7f, 1.3f);
+
+        audioSource.spatialBlend = 0; //set to 2D
+
+        audioSource.Play();
+
+        float clipLength = audioSource == null ? 0f : audioSource.clip.length;
+
 
         Destroy(audioSource.gameObject, clipLength);
     }
