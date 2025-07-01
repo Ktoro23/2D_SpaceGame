@@ -14,8 +14,10 @@ public class Critter1 : MonoBehaviour
     private Quaternion targetRotation;
 
     [SerializeField] private GameObject zappedEffect;
+    [SerializeField] private GameObject burnEffect;
 
     [SerializeField] private AudioClip[] flash;
+    [SerializeField] private AudioClip[] burn;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,6 +54,10 @@ public class Critter1 : MonoBehaviour
         float moveX = (GameManger.Instance.worldSpeed * PlayerMovement.Instance.boost) * Time.deltaTime;
         transform.position += new Vector3(-moveX, 0);
 
+        if (transform.position.x < -11)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void GenerateRandomPosition()
@@ -67,6 +73,12 @@ public class Critter1 : MonoBehaviour
         {
             SoundsFXManager.Instance.PlayRandomSoundFXClip(flash, transform, 1f);
             Instantiate(zappedEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            SoundsFXManager.Instance.PlayRandomSoundFXClip(flash, transform, 1f);
+            Instantiate(burnEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         

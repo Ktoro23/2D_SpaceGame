@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: -1736167032, guid: 4b36b3a208c3ce048ab9243e0299ae9c, type: 3}
   - {fileID: 838075171, guid: 4b36b3a208c3ce048ab9243e0299ae9c, type: 3}
   zappedEffect: {fileID: 7392998267307671363, guid: 76af3f5a1b613a546bbb926312fbdcb0, type: 3}
+  burnEffect: {fileID: 1083510958487314370, guid: 505b6211c5cedc5408a000dd03b1c36e, type: 3}
   flash:
   - {fileID: 8300000, guid: be3a25706cc69404fbccd5f1e3ce8e55, type: 3}
   - {fileID: 8300000, guid: b016917f9e6c74c44a552d790982f5b8, type: 3}
