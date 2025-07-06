@@ -12,7 +12,7 @@ public class Boom : MonoBehaviour
 
     private void Update()
     {
-        float moveX = (GameManger.Instance.worldSpeed * PlayerMovement.Instance.boost) * Time.deltaTime;
+        float moveX = GameManger.Instance.worldSpeed * Time.deltaTime;
         transform.position += new Vector3(-moveX, 0);
     }
 }

@@ -23,7 +23,7 @@ public class ObjectSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waves[waveNumber].spawnTimer += Time.deltaTime * PlayerMovement.Instance.boost;
+        waves[waveNumber].spawnTimer += Time.deltaTime * GameManger.Instance.worldSpeed;
         if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval)
         {
                waves[waveNumber].spawnTimer = 0;

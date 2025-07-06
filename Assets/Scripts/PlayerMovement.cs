@@ -15,9 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Material whiteMaterial;
 
     public float moveSpeed = 5f;
-    public float boost = 1f;
-    private float boostPower = 4f;
-    private bool boosting = false;
+   
+    public bool boosting = false;
 
     private Vector2 moveInput;
 
@@ -95,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = moveInput * moveSpeed;
         if (boosting)
         {
-            if (energy >= 0.2f) energy -= 0.2f;
+            if (energy >= 0.5f) energy -= 0.5f;
             else
             {
                 ExitBoost();
@@ -124,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             if (energy > 10f)
             {
 
-                boost = boostPower;
+                GameManger.Instance.SetWorldSpeed(7f);
                 animator.SetBool("boosting", true);
                 boosting = true;
 
@@ -141,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
     public void ExitBoost()
     {
         animator.SetBool("boosting", false);
-        boost = 1f;
+        GameManger.Instance.SetWorldSpeed(1f);
         boosting = false;
         engineEffect.Stop();
     }
@@ -151,6 +150,10 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             TakeDamage(1);
+        }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            TakeDamage(5);
         }
     }
 
@@ -163,7 +166,8 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine("ResetMaterial");
         if (health <= 0)
         {
-            boost = 0f;
+            ExitBoost();
+            GameManger.Instance.SetWorldSpeed(0f);
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.OnDeathSound, 1f);
             gameObject.SetActive(false);
             Instantiate(destroyEffect, transform.position, transform.rotation);
@@ -198,8 +202,7 @@ public class PlayerMovement : MonoBehaviour
     void OnBoost(InputAction.CallbackContext context)
     {
         if (energy > 10f)
-        {
-            Debug.Log("adad");
+        {         
             engineEffect.Play();
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
         }

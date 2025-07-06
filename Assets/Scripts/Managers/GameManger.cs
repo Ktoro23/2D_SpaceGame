@@ -9,6 +9,9 @@ public class GameManger : MonoBehaviour
 
     public float worldSpeed;
 
+    public int critterCount;
+    [SerializeField] private GameObject boss1;
+
    // InputAction pauseAction;
     InputSystem_Actions action;
     void Awake()
@@ -28,7 +31,17 @@ public class GameManger : MonoBehaviour
 
     private void Start()
     {
-        
+        critterCount = 0;
+    }
+
+    private void Update()
+    {
+        if (critterCount > 15)
+        {
+            critterCount = 0;
+            Instantiate(boss1, new Vector2(15f, 0), Quaternion.Euler(0, 0, -90));
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossSpawn, transform, 1f);
+        }
     }
 
     public void Paused(InputAction.CallbackContext context)
@@ -96,5 +109,10 @@ public class GameManger : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("GameOver");
+    }
+
+    public void SetWorldSpeed(float speed)
+    {
+        worldSpeed = speed;
     }
 }

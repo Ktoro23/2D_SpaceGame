@@ -36,9 +36,9 @@ public class Asrtroid : MonoBehaviour
     
     void Update()
     {
-        float moveX = (GameManger.Instance.worldSpeed * PlayerMovement.Instance.boost) * Time.deltaTime;
+        float moveX = GameManger.Instance.worldSpeed * Time.deltaTime;
         transform.position += new Vector3(-moveX, 0);
-        if(transform.position.x < -11)
+        if(transform.position.x < -13)
         {
             Destroy(gameObject);
         }
@@ -46,18 +46,27 @@ public class Asrtroid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"));
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"))
         {
-            spriteRenderer.material = whiteMaterial;
-            StartCoroutine("ResetMaterial");
-            SoundsFXManager.Instance.PlayRandomSoundFXClip(rockHit, transform, 1f);
-            lives--;
-            if(lives <= 0)
-            {
-                Instantiate(desroyEffect, transform.position, transform.rotation);
-                SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
-                Destroy(gameObject);
-            }
+            TakeDamage(1);
+        }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            TakeDamage(10);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        spriteRenderer.material = whiteMaterial;
+        StartCoroutine("ResetMaterial");
+        SoundsFXManager.Instance.PlayRandomSoundFXClip(rockHit, transform, 1f);
+        lives -= damage;
+        if (lives <= 0)
+        {
+            Instantiate(desroyEffect, transform.position, transform.rotation);
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
+            Destroy(gameObject);
         }
     }
 

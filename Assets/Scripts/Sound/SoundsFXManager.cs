@@ -16,7 +16,7 @@ public class SoundsFXManager : MonoBehaviour
     public AudioClip shoot;
     public AudioClip bossHit;
     public AudioClip bossCharge;
-
+    public AudioClip bossSpawn;
 
 
     private void Awake()

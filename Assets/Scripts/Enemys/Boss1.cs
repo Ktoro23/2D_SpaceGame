@@ -9,22 +9,26 @@ public class Boss1 : MonoBehaviour
 
     private float switchInterval;
     private float switchTimer;
+
+    private int lives;
     void Start()
     {
         animator = GetComponent<Animator>();
         EnterChargeState();
+        lives = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float playerPosition = PlayerMovement.Instance.transform.position.x;
         if (switchTimer > 0)
         {
             switchTimer -= Time.deltaTime;
         }
         else
         {
-            if (Charging)
+            if (Charging && transform.position.x > playerPosition)
             {
                 EnterPatrolState();
             }
@@ -33,13 +37,29 @@ public class Boss1 : MonoBehaviour
                 EnterChargeState();
             }
         }
-        
+
         if (transform.position.y > 3 || transform.position.y < -3)
         {
             speedY *= -1;
         }
-        float moveX = speedX * PlayerMovement.Instance.boost * Time.deltaTime;
-        float moveY = speedY * Time.deltaTime;
+        else if (transform.position.x < playerPosition)
+        {
+            EnterChargeState();
+        }
+
+        bool boost = PlayerMovement.Instance.boosting;
+        float moveX;
+        if (boost && !Charging)
+        {
+            moveX = GameManger.Instance.worldSpeed * Time.deltaTime * -0.5f;
+        }
+        else
+        {
+            moveX = speedX * Time.deltaTime;
+        }
+
+
+            float moveY = speedY * Time.deltaTime;
         
         transform.position += new Vector3(moveX, moveY);
         if (transform.position.x < -11)
@@ -60,19 +80,26 @@ public class Boss1 : MonoBehaviour
 
     void EnterChargeState()
     {
-        speedX = -5f;
-        speedY = 0;
-        switchInterval = Random.Range(2f, 2.5f);
-        switchTimer = switchInterval;
-        Charging = true;
         animator.SetBool("Charging", true);
-        SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossCharge, 1, true);
-
-        
+        if (!Charging) SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossCharge, 1f, true);
+        speedX = -10f;
+        speedY = 0;
+        switchInterval = Random.Range(0.6f, 1.5f);
+        switchTimer = switchInterval;
+        Charging = true;        
     }
 
     public void TakeDamage(int damage)
     {
+        SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossHit, 1f, true);
+        lives -= damage;
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(0);
+        }
     }
 }

@@ -51,7 +51,7 @@ public class Critter1 : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 1080 * Time.deltaTime);
         }
 
-        float moveX = (GameManger.Instance.worldSpeed * PlayerMovement.Instance.boost) * Time.deltaTime;
+        float moveX = GameManger.Instance.worldSpeed * Time.deltaTime;
         transform.position += new Vector3(-moveX, 0);
 
         if (transform.position.x < -11)
@@ -74,12 +74,14 @@ public class Critter1 : MonoBehaviour
             SoundsFXManager.Instance.PlayRandomSoundFXClip(flash, transform, 1f);
             Instantiate(zappedEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            GameManger.Instance.critterCount++;
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
             SoundsFXManager.Instance.PlayRandomSoundFXClip(flash, transform, 1f);
             Instantiate(burnEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            GameManger.Instance.critterCount++;
         }
         
     }
