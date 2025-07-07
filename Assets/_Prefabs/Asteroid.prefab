@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7670160604851557040}
   - component: {fileID: 2805205871066640179}
   - component: {fileID: 8053437340468480781}
+  - component: {fileID: -3178571614001480206}
+  - component: {fileID: -3766357040761512182}
   m_Layer: 8
   m_Name: Asteroid
   m_TagString: Obstacle
@@ -167,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   desroyEffect: {fileID: 5797474227463317545, guid: badb56ec3ba09384b91059faf78a2968, type: 3}
   lives: 5
-  whiteMaterial: {fileID: 2100000, guid: 2cbf7c62b15e2594b9284990e333bdaf, type: 2}
   rockHit:
   - {fileID: 8300000, guid: b35485d4d4010b344ba17408b203d16b, type: 3}
   - {fileID: 8300000, guid: 2c22976dcdc13fc4484a573984a3e0bc, type: 3}
@@ -178,3 +179,27 @@ MonoBehaviour:
   - {fileID: -43423241, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -1813894850, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
   - {fileID: -1565229668, guid: 19db4dbcbd9502042962f37cd3bc6c1f, type: 3}
+--- !u!114 &-3178571614001480206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845256419708256878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7660e2fbb642a614b8db996e85adfed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3766357040761512182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845256419708256878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099f7a26f99b363438f2bfe9231cae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

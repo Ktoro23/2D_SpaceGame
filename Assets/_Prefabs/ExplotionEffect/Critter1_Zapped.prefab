@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1236828467984225776}
   - component: {fileID: 7303254495219547403}
   - component: {fileID: 2484179507695890547}
-  - component: {fileID: 978257589649465604}
+  - component: {fileID: 3688863059159442219}
+  - component: {fileID: 65603808566453077}
   m_Layer: 0
   m_Name: Critter1_Zapped
   m_TagString: Untagged
@@ -111,7 +112,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &978257589649465604
+--- !u!114 &3688863059159442219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,6 +121,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7392998267307671363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1d5df1d7b74c0429ae6e3a1fdfbacc, type: 3}
+  m_Script: {fileID: 11500000, guid: 47c84a5d08be2b441b5ffa000e8ea2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &65603808566453077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392998267307671363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7660e2fbb642a614b8db996e85adfed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -7396,6 +7396,7 @@ GameObject:
   - component: {fileID: 1471882443}
   - component: {fileID: 1471882437}
   - component: {fileID: 1471882442}
+  - component: {fileID: 1471882444}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -7655,7 +7656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1471882438}
-  whiteMaterial: {fileID: 2100000, guid: 7cee91b62c0ffec419b226d798df2174, type: 2}
   moveSpeed: 5
   boosting: 0
   energy: 0
@@ -7701,6 +7701,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.48219037, y: 0}
   m_Radius: 0.3219022
+--- !u!114 &1471882444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471882436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099f7a26f99b363438f2bfe9231cae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1502150319 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 540603840031498674, guid: fe29d58cada9a91438009012c2623822, type: 3}

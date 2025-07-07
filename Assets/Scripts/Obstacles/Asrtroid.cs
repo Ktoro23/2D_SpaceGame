@@ -6,11 +6,9 @@ public class Asrtroid : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject desroyEffect;
     [SerializeField] private int lives;
+    private FlashWhite flashWhite;
 
     private Rigidbody2D rb;
-
-    private Material defaultMaterial;
-    [SerializeField] private Material whiteMaterial;
 
     [SerializeField] AudioClip[] rockHit;
 
@@ -20,8 +18,8 @@ public class Asrtroid : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>(); 
-        defaultMaterial = spriteRenderer.material;
+        rb = GetComponent<Rigidbody2D>();
+        flashWhite = GetComponent<FlashWhite>();
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         float pushX = Random.Range(-1f, 0);
         float pushY = Random.Range(-1f, 1);
@@ -34,16 +32,7 @@ public class Asrtroid : MonoBehaviour
     }
 
     
-    void Update()
-    {
-        float moveX = GameManger.Instance.worldSpeed * Time.deltaTime;
-        transform.position += new Vector3(-moveX, 0);
-        if(transform.position.x < -13)
-        {
-            Destroy(gameObject);
-        }
-    }
-
+ 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"))
@@ -58,10 +47,10 @@ public class Asrtroid : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        spriteRenderer.material = whiteMaterial;
-        StartCoroutine("ResetMaterial");
+        
         SoundsFXManager.Instance.PlayRandomSoundFXClip(rockHit, transform, 1f);
         lives -= damage;
+        flashWhite.Flash();
         if (lives <= 0)
         {
             Instantiate(desroyEffect, transform.position, transform.rotation);
@@ -70,9 +59,5 @@ public class Asrtroid : MonoBehaviour
         }
     }
 
-    IEnumerator ResetMaterial()
-    {
-        yield return new WaitForSeconds(0.1f);
-        spriteRenderer.material = defaultMaterial;
-    }
+   
 }

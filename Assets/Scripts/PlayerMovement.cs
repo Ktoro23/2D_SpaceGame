@@ -9,10 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public Rigidbody2D rb;
     private Vector2 playerDirection;
-    private SpriteRenderer spriteRenderer;
-
-    private Material defaultMaterial;
-    [SerializeField] private Material whiteMaterial;
+    private FlashWhite flashWhite;
+   
 
     public float moveSpeed = 5f;
    
@@ -63,9 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        defaultMaterial = spriteRenderer.material;
+        flashWhite = GetComponent<FlashWhite>();
 
 
         energy = maxEnergy;
@@ -162,8 +158,7 @@ public class PlayerMovement : MonoBehaviour
         health -= damage;
         UIController.Instance.updateHealthSlider(health, maxHealth);
         SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Hit, 1f);
-        spriteRenderer.material = whiteMaterial;
-        StartCoroutine("ResetMaterial");
+        flashWhite.Flash();
         if (health <= 0)
         {
             ExitBoost();
@@ -174,12 +169,6 @@ public class PlayerMovement : MonoBehaviour
             GameManger.Instance.GameOver();
 
         }
-    }
-
-    IEnumerator ResetMaterial()
-    {
-        yield return new WaitForSeconds(0.2f);
-        spriteRenderer.material = defaultMaterial;
     }
 
     void OnShoot(InputAction.CallbackContext context)
