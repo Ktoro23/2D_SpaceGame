@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PhaserBullet : MonoBehaviour
 {
-    [SerializeField] string[] collisionTags;
+   // [SerializeField] string[] collisionTags;
     private void Update()
     {
         transform.position += new Vector3(PhaserWeapon.Instance.speed * Time.deltaTime, 0f);
@@ -14,15 +14,23 @@ public class PhaserBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Critter") || )
-        foreach (string tag in collisionTags)
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
-            if (collision.gameObject.CompareTag(tag))
-            {
-                gameObject.SetActive(false);
-                return;
-            }
+            Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
+            if (asrtroid) asrtroid.TakeDamage(PhaserWeapon.Instance.damage);
+            gameObject.SetActive(false);
         }
+        else if (collision.gameObject.CompareTag("Boss")) 
+        {
+            Boss1 boss1 = collision.gameObject.GetComponent<Boss1>();
+            if(boss1) boss1.TakeDamage(PhaserWeapon.Instance.damage);
+            gameObject.SetActive(false);
+        }
+        else if (collision.gameObject.CompareTag("Critter"))
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }
 

@@ -1,4 +1,4 @@
-using UnityEditor.U2D.Sprites;
+
 using UnityEngine;
 
 public class Critter1 : MonoBehaviour
@@ -38,10 +38,10 @@ public class Critter1 : MonoBehaviour
         else
         {
             GenerateRandomPosition();
-            moveInterval = Random.Range(0.1f, 2f);
+            moveInterval = Random.Range(0.3f, 2f);
             moveTimer = moveInterval;
         }
-        
+        targetPosition -= new Vector3(GameManger.Instance.worldSpeed * Time.deltaTime, 0);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         Vector3 relativePos = targetPosition - transform.position;

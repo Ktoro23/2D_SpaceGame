@@ -9,7 +9,7 @@ public class PhaserWeapon : MonoBehaviour
     [SerializeField] private AudioClip[] bulletsSFX;
 
     public float speed;
-    public int damege;
+    public int damage;
 
 
     void Awake()

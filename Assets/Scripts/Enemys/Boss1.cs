@@ -11,11 +11,13 @@ public class Boss1 : MonoBehaviour
     private float switchTimer;
 
     private int lives;
+    private int damage;
     void Start()
     {
         animator = GetComponent<Animator>();
         EnterChargeState();
         lives = 100;
+        damage = 20;
     }
 
     // Update is called once per frame
@@ -97,9 +99,17 @@ public class Boss1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
-            TakeDamage(0);
+
+            Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
+            if (asrtroid) asrtroid.TakeDamage(damage);
+            
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (player) player.TakeDamage(damage);
         }
     }
 }

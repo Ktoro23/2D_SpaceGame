@@ -145,15 +145,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            TakeDamage(1);
-        }
-        else if (collision.gameObject.CompareTag("Boss"))
-        {
-            TakeDamage(5);
+
+            Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
+            if (asrtroid) asrtroid.TakeDamage(1);
+            
         }
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         UIController.Instance.updateHealthSlider(health, maxHealth);

@@ -5,7 +5,7 @@ public class Asrtroid : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject desroyEffect;
-    [SerializeField] private int lives;
+    
     private FlashWhite flashWhite;
 
     private Rigidbody2D rb;
@@ -13,6 +13,9 @@ public class Asrtroid : MonoBehaviour
     [SerializeField] AudioClip[] rockHit;
 
     [SerializeField] private Sprite[] sprites;
+
+    private int lives;
+    private int damage;
 
     
     void Start()
@@ -28,21 +31,21 @@ public class Asrtroid : MonoBehaviour
 
         float randomScale = Random.Range(0.4f, 1f);
         transform.localScale = new Vector2(randomScale, randomScale);
-       
+
+        lives = 5;
+        damage = 1;
     }
 
     
  
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            TakeDamage(1);
+            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (player) player.TakeDamage(damage);
         }
-        else if (collision.gameObject.CompareTag("Boss"))
-        {
-            TakeDamage(10);
-        }
+       
     }
 
     public void TakeDamage(int damage)
