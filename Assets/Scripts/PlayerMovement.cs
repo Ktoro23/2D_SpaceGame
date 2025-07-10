@@ -10,10 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 playerDirection;
     private FlashWhite flashWhite;
-   
+
 
     public float moveSpeed = 5f;
-   
+
     public bool boosting = false;
 
     private Vector2 moveInput;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
 
-    [SerializeField] private GameObject destroyEffect;
+    private ObjectPooler destroyEffectPool;
 
     [SerializeField] private ParticleSystem engineEffect;
 
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         flashWhite = GetComponent<FlashWhite>();
 
-
+        destroyEffectPool = PoolHelper.GetPool(PoolTypes.Boom1);
         energy = maxEnergy;
         UIController.Instance.updateEnergySlider(energy, maxEnergy);
         health = maxHealth;
@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
             if (asrtroid) asrtroid.TakeDamage(1);
-            
+
         }
     }
 
@@ -163,10 +163,10 @@ public class PlayerMovement : MonoBehaviour
             ExitBoost();
             GameManger.Instance.SetWorldSpeed(0f);
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.OnDeathSound, 1f);
-            gameObject.SetActive(false);
-            Instantiate(destroyEffect, transform.position, transform.rotation);
-            GameManger.Instance.GameOver();
+            GameObject effect =  PoolHelper.GetPool(PoolTypes.Boom1).GetPooledObject(transform.position );
 
+            GameManger.Instance.GameOver();
+            gameObject.SetActive(false);
         }
     }
 
@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
     void OnBoost(InputAction.CallbackContext context)
     {
         if (energy > 10f)
-        {         
+        {
             engineEffect.Play();
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
         }

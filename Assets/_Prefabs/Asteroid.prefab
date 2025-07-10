@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3442c007a15ef498f3fd958ce53da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desroyEffect: {fileID: 5797474227463317545, guid: badb56ec3ba09384b91059faf78a2968, type: 3}
-  lives: 5
   rockHit:
   - {fileID: 8300000, guid: b35485d4d4010b344ba17408b203d16b, type: 3}
   - {fileID: 8300000, guid: 2c22976dcdc13fc4484a573984a3e0bc, type: 3}

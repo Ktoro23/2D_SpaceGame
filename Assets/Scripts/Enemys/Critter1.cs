@@ -65,15 +65,15 @@ public class Critter1 : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             SoundsFXManager.Instance.PlayRandomSoundFXClip(flash, transform, 1f);
-            Instantiate(zappedEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            GameObject effect = PoolHelper.GetPool(PoolTypes.Critter1_Zapped).GetPooledObject(transform.position, transform.rotation);
+            gameObject.SetActive(false);
             GameManger.Instance.critterCount++;
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
             SoundsFXManager.Instance.PlayRandomSoundFXClip(flash, transform, 1f);
-            Instantiate(burnEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            GameObject effect = PoolHelper.GetPool(PoolTypes.Critter1_Burn).GetPooledObject(transform.position, transform.rotation);
+            gameObject.SetActive(false);
             GameManger.Instance.critterCount++;
         }
         

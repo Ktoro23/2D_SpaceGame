@@ -1,12 +1,21 @@
 using UnityEngine;
+using System.Collections;
 
 public class DestroyWhenAnimFinish : MonoBehaviour
 {
     private Animator animator;
 
-    private void Start()
+    void OnEnable()
     {
         animator = GetComponent<Animator>();
-        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
+
+        StartCoroutine(nameof(Deactivate));
+    }
+
+
+    IEnumerator Deactivate()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        gameObject.SetActive(false);
     }
 }

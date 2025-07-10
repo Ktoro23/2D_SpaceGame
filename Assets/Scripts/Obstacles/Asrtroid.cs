@@ -4,7 +4,7 @@ using System.Collections;
 public class Asrtroid : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private GameObject desroyEffect;
+    private ObjectPooler destroyEffectPool;
     
     private FlashWhite flashWhite;
 
@@ -15,14 +15,21 @@ public class Asrtroid : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
 
     private int lives;
+    private int maxLive;
     private int damage;
 
-    
+    private void OnEnable()
+    {
+        lives = maxLive;
+    }
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         flashWhite = GetComponent<FlashWhite>();
+        destroyEffectPool = PoolHelper.GetPool(PoolTypes.Astroid);
+        
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         float pushX = Random.Range(-1f, 0);
         float pushY = Random.Range(-1f, 1);
@@ -32,7 +39,8 @@ public class Asrtroid : MonoBehaviour
         float randomScale = Random.Range(0.4f, 1f);
         transform.localScale = new Vector2(randomScale, randomScale);
 
-        lives = 5;
+        maxLive = 5;
+        lives = maxLive;
         damage = 1;
     }
 
@@ -56,9 +64,10 @@ public class Asrtroid : MonoBehaviour
         flashWhite.Flash();
         if (lives <= 0)
         {
-            Instantiate(desroyEffect, transform.position, transform.rotation);
+            GameObject effect = PoolHelper.GetPool(PoolTypes.Boom2).GetPooledObject(transform.position);   
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
-            Destroy(gameObject);
+            flashWhite.Rest();
+            gameObject.SetActive(false);
         }
     }
 

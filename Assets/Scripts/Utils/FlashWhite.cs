@@ -26,4 +26,9 @@ public class FlashWhite : MonoBehaviour
         spriteRenderer.material = defaultMaterial;
     }
 
+    public void Rest()
+    {
+        spriteRenderer.material = defaultMaterial;
+    }
+
 }

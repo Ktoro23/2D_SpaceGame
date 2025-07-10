@@ -503,7 +503,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0.55
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -565,6 +565,53 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5213480285970257564, guid: c5274a0f455a8c14191109ea7487680a, type: 3}
   m_PrefabInstance: {fileID: 1705067321258686210}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &197918694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197918695}
+  - component: {fileID: 197918696}
+  m_Layer: 0
+  m_Name: Critter1_BurnPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &197918695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197918694}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197918696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197918694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1083510958487314370, guid: 505b6211c5cedc5408a000dd03b1c36e, type: 3}
+  poolSize: 1
+  poolType: 5
 --- !u!1 &256508868
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +648,53 @@ Transform:
   - {fileID: 619394802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &277002027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277002028}
+  - component: {fileID: 277002029}
+  m_Layer: 0
+  m_Name: Critter1Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &277002028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277002027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277002029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277002027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6895645792140465524, guid: da8df067412c0f4448479b682750ead7, type: 3}
+  poolSize: 5
+  poolType: 4
 --- !u!1 &339753333
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,24 +958,14 @@ MonoBehaviour:
   maxPos: {fileID: 974018502}
   waveNumber: 0
   waves:
-  - preFabs: {fileID: 3845256419708256878, guid: 8be67956665293d47878f882b779ef72, type: 3}
+  - pool: {fileID: 277002029}
     spawnTimer: 0
-    spawnInterval: 1
-    objectsPerWave: 20
+    spawnInterval: 2
+    objectsPerWave: 3
     spawnObjectCount: 0
-  - preFabs: {fileID: 3845256419708256878, guid: 8be67956665293d47878f882b779ef72, type: 3}
+  - pool: {fileID: 569061153}
     spawnTimer: 0
-    spawnInterval: 0.6
-    objectsPerWave: 40
-    spawnObjectCount: 0
-  - preFabs: {fileID: 3845256419708256878, guid: 8be67956665293d47878f882b779ef72, type: 3}
-    spawnTimer: 0
-    spawnInterval: 0.4
-    objectsPerWave: 100
-    spawnObjectCount: 0
-  - preFabs: {fileID: 1705176312483202249, guid: cf4dce50cf63a944889a66a1e44bd889, type: 3}
-    spawnTimer: 0
-    spawnInterval: 5
+    spawnInterval: 3
     objectsPerWave: 1
     spawnObjectCount: 0
 --- !u!4 &416129843
@@ -901,6 +985,53 @@ Transform:
   - {fileID: 974018502}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &451004846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451004847}
+  - component: {fileID: 451004848}
+  m_Layer: 0
+  m_Name: Boom2Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &451004847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451004846}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.0537, y: -2.00812, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451004848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451004846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5797474227463317545, guid: badb56ec3ba09384b91059faf78a2968, type: 3}
+  poolSize: 5
+  poolType: 2
 --- !u!4 &469970844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6208296623903345919, guid: 8a52dedb34b60c54ab7512770ecadc2d, type: 3}
@@ -1222,6 +1353,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &569061151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569061152}
+  - component: {fileID: 569061153}
+  m_Layer: 0
+  m_Name: AsteroidPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &569061152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569061151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &569061153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569061151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3845256419708256878, guid: 8be67956665293d47878f882b779ef72, type: 3}
+  poolSize: 5
+  poolType: 0
 --- !u!1 &607435458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1594,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 256508869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &668938907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 668938908}
+  - component: {fileID: 668938909}
+  m_Layer: 0
+  m_Name: Boom1Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &668938908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668938907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668938909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668938907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2029151512926048353, guid: c177640aad7e0374e8d067bf1956b325, type: 3}
+  poolSize: 1
+  poolType: 1
 --- !u!1 &721591672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6464977174770840772, guid: 16b651939da5560438d7d2a33afc12ff, type: 3}
   poolSize: 5
+  poolType: 3
 --- !u!1 &1182455145
 GameObject:
   m_ObjectHideFlags: 0
@@ -7853,7 +8079,6 @@ MonoBehaviour:
   energyRegen: 0.05
   health: 5
   maxHealth: 5
-  destroyEffect: {fileID: 2029151512926048353, guid: c177640aad7e0374e8d067bf1956b325, type: 3}
   engineEffect: {fileID: 1182455146}
 --- !u!58 &1471882443
 CircleCollider2D:
@@ -7908,6 +8133,53 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 540603840031498674, guid: fe29d58cada9a91438009012c2623822, type: 3}
   m_PrefabInstance: {fileID: 1420218511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1555975405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555975406}
+  - component: {fileID: 1555975407}
+  m_Layer: 0
+  m_Name: Critter1_ZappedPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1555975406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555975405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1555975407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555975405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7392998267307671363, guid: 76af3f5a1b613a546bbb926312fbdcb0, type: 3}
+  poolSize: 1
+  poolType: 6
 --- !u!1 &1749182502
 GameObject:
   m_ObjectHideFlags: 0
@@ -8794,7 +9066,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0.55
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -8887,11 +9159,17 @@ Transform:
   m_GameObject: {fileID: 1957695750}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17432, y: -0.64857, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1145437480}
+  - {fileID: 569061152}
+  - {fileID: 451004847}
+  - {fileID: 668938908}
+  - {fileID: 277002028}
+  - {fileID: 197918695}
+  - {fileID: 1555975406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000151047
@@ -8985,7 +9263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2006138880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9002,17 +9280,17 @@ MonoBehaviour:
   maxPos: {fileID: 607435459}
   waveNumber: 0
   waves:
-  - preFabs: {fileID: 6895645792140465524, guid: da8df067412c0f4448479b682750ead7, type: 3}
+  - pool: {fileID: 0}
     spawnTimer: 0
     spawnInterval: 1
     objectsPerWave: 3
     spawnObjectCount: 0
-  - preFabs: {fileID: 6895645792140465524, guid: da8df067412c0f4448479b682750ead7, type: 3}
+  - pool: {fileID: 0}
     spawnTimer: 0
     spawnInterval: 1.2
     objectsPerWave: 20
     spawnObjectCount: 0
-  - preFabs: {fileID: 6895645792140465524, guid: da8df067412c0f4448479b682750ead7, type: 3}
+  - pool: {fileID: 0}
     spawnTimer: 0
     spawnInterval: 5
     objectsPerWave: 3
