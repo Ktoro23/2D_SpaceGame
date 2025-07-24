@@ -3,6 +3,9 @@ using UnityEngine;
 public class Boss1 : MonoBehaviour
 {
     private Animator animator;
+    private ObjectPooler destroyEffectPool;
+
+
     private float speedX;
     private float speedY;
     private bool Charging;
@@ -11,13 +14,21 @@ public class Boss1 : MonoBehaviour
     private float switchTimer;
 
     private int lives;
-    private int damage;
+    private int maxLives = 5;
+    private int damage = 20;
+
+
+    private void OnEnable()
+    {
+        EnterChargeState();
+        lives = maxLives;
+    }
     void Start()
     {
+        destroyEffectPool = PoolHelper.GetPool(PoolTypes.Boss1Boom);
         animator = GetComponent<Animator>();
-        EnterChargeState();
-        lives = 100;
-        damage = 20;
+        
+        
     }
 
     // Update is called once per frame
@@ -95,6 +106,12 @@ public class Boss1 : MonoBehaviour
     {
         SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossHit, 1f, true);
         lives -= damage;
+        if (lives < 0)
+        {
+            GameObject effect = PoolHelper.GetPool(PoolTypes.Boom1).GetPooledObject(transform.position);
+            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f, true);
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

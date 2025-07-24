@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerInput = GetComponent<PlayerInput>();
-        shootAction = playerInput.actions["Shoot"];
+        shootAction = InputSystem.actions.FindAction("Shoot");
         boostAction = InputSystem.actions.FindAction("Sprint");
     }
 

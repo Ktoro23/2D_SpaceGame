@@ -10,7 +10,7 @@ public class GameManger : MonoBehaviour
     public float worldSpeed;
 
     public int critterCount;
-    [SerializeField] private GameObject boss1;
+    private GameObject boss1;
 
    // InputAction pauseAction;
     InputSystem_Actions action;
@@ -36,10 +36,11 @@ public class GameManger : MonoBehaviour
 
     private void Update()
     {
-        if (critterCount > 15)
+        if (critterCount > 5)
         {
             critterCount = 0;
-            Instantiate(boss1, new Vector2(15f, 0), Quaternion.Euler(0, 0, -90));
+            GameObject effect= PoolHelper.GetPool(PoolTypes.Boss1).GetPooledObject(transform.position = new Vector2(15f, 0));
+            //Instantiate(boss1, new Vector2(15f, 0), Quaternion.Euler(0, 0, -90));
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossSpawn, transform, 1f);
         }
     }

@@ -95,5 +95,7 @@ public enum PoolTypes
     Critter1,
     Critter1_Burn,
     Critter1_Zapped,
+    Boss1,
+    Boss1Boom,
 
 }
