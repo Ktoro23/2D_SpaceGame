@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using System.Collections.Generic;
 using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
@@ -37,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private ParticleSystem engineEffect;
 
-    //[SerializeField] AudioClip OnDeathSound;
-
+    [SerializeField] private int experience;
+    [SerializeField] private int currentLevel;
+    [SerializeField] private int maxLevel;
+    [SerializeField] private List<int> playerLevels;
 
 
     void Awake()

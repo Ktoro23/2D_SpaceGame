@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class PhaserBullet : MonoBehaviour
 {
-   // [SerializeField] string[] collisionTags;
+
+    PhaserWeapon weapon;
+
+    private void Start()
+    {
+        weapon = PhaserWeapon.Instance;
+    }
     private void Update()
     {
-        transform.position += new Vector3(PhaserWeapon.Instance.speed * Time.deltaTime, 0f);
+        transform.position += new Vector3(weapon.stats[weapon.weaponLevel].speed * Time.deltaTime, 0f);
         if (transform.position.x > 11)
         {
             gameObject.SetActive(false);
@@ -17,13 +23,13 @@ public class PhaserBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
-            if (asrtroid) asrtroid.TakeDamage(PhaserWeapon.Instance.damage);
+            if (asrtroid) asrtroid.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
             gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Boss")) 
         {
             Boss1 boss1 = collision.gameObject.GetComponent<Boss1>();
-            if(boss1) boss1.TakeDamage(PhaserWeapon.Instance.damage);
+            if(boss1) boss1.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
             gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Critter"))

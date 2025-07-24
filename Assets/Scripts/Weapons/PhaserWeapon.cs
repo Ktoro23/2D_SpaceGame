@@ -27,18 +27,18 @@ public class PhaserWeapon : Weapon
     {
         SoundsFXManager.Instance.PlayRandomSoundFXClip(bulletsSFX, transform, 1f);
 
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < stats[weaponLevel].amount; i++)
         {
             GameObject bullet = bulletPool.GetPooledObject();
             float yPos = transform.position.y;
-            if (amount > 1)
+            if (stats[weaponLevel].amount > 1)
             {
-                float spacing = range / (amount - 1);
-                yPos = transform.position.y - (range / 2) + i * spacing;
+                float spacing = stats[weaponLevel].range / (stats[weaponLevel].amount - 1);
+                yPos = transform.position.y - (stats[weaponLevel].range / 2) + i * spacing;
             }
             
             bullet.transform.position = new Vector2(transform.position.x, yPos);
-            bullet.transform.localScale = new Vector2(size, size);
+            bullet.transform.localScale = new Vector2(stats[weaponLevel].size, stats[weaponLevel].size);
             bullet.SetActive(true);
         }
         

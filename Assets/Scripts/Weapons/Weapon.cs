@@ -1,20 +1,18 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class Weapon : MonoBehaviour
 {
-    public float speed;
-    public int damage;
-    public float size;
-    public float amount;
-    public float range;
-    void Start()
-    {
-        
-    }
+    public int weaponLevel;
+    public List<WeaponStats> stats;
 
-    // Update is called once per frame
-    void Update()
+
+    [System.Serializable]
+    public class WeaponStats
     {
-        
+        public float speed;
+        public int damage;
+        public float size;
+        public float amount;
+        public float range;
     }
 }
