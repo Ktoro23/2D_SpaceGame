@@ -21,6 +21,7 @@ public class Asrtroid : MonoBehaviour
     private void OnEnable()
     {
         lives = maxLive;
+        transform.rotation = Quaternion.identity;
     }
 
     void Start()
@@ -61,10 +62,15 @@ public class Asrtroid : MonoBehaviour
         
         SoundsFXManager.Instance.PlayRandomSoundFXClip(rockHit, transform, 1f);
         lives -= damage;
-        flashWhite.Flash();
-        if (lives <= 0)
+        if (lives > 0)
         {
-            GameObject effect = PoolHelper.GetPool(PoolTypes.Boom2).GetPooledObject(transform.position);   
+            flashWhite.Flash();
+        }
+        
+        else
+        {
+            GameObject effect = PoolHelper.GetPool(PoolTypes.Boom2).GetPooledObject(transform.position);
+            effect.transform.localScale = transform.localScale;
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
             flashWhite.Rest();
             gameObject.SetActive(false);

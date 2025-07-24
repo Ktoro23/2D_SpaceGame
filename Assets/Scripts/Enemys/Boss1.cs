@@ -14,7 +14,7 @@ public class Boss1 : MonoBehaviour
     private float switchTimer;
 
     private int lives;
-    private int maxLives = 5;
+    private int maxLives = 100;
     private int damage = 20;
 
 
@@ -23,12 +23,13 @@ public class Boss1 : MonoBehaviour
         EnterChargeState();
         lives = maxLives;
     }
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();    
+    }
     void Start()
     {
         destroyEffectPool = PoolHelper.GetPool(PoolTypes.Boss1Boom);
-        animator = GetComponent<Animator>();
-        
-        
     }
 
     // Update is called once per frame
@@ -77,7 +78,7 @@ public class Boss1 : MonoBehaviour
         transform.position += new Vector3(moveX, moveY);
         if (transform.position.x < -11)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -108,7 +109,7 @@ public class Boss1 : MonoBehaviour
         lives -= damage;
         if (lives < 0)
         {
-            GameObject effect = PoolHelper.GetPool(PoolTypes.Boom1).GetPooledObject(transform.position);
+            GameObject effect = PoolHelper.GetPool(PoolTypes.Boss1Boom).GetPooledObject(transform.position);
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f, true);
             gameObject.SetActive(false);
         }

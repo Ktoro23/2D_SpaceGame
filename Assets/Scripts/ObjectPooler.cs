@@ -70,10 +70,13 @@ public static class PoolHelper
     static Dictionary<PoolTypes, ObjectPooler> pools = new Dictionary<PoolTypes, ObjectPooler>();
     public static void Subscribe(PoolTypes poolType, ObjectPooler pool)
     {
-        if (pools.ContainsKey(poolType))
+        if (!pools.ContainsKey(poolType))
             pools.Add(poolType, pool);
         else
+        {
+            Debug.LogWarning("Pool Overwritten");
             pools[poolType] = pool;
+        }
     }
     public static void UnSubscribe(PoolTypes poolType)
     {

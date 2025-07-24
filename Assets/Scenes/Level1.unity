@@ -966,7 +966,12 @@ MonoBehaviour:
   - pool: {fileID: 569061153}
     spawnTimer: 0
     spawnInterval: 3
-    objectsPerWave: 1
+    objectsPerWave: 10
+    spawnObjectCount: 0
+  - pool: {fileID: 970176071}
+    spawnTimer: 0
+    spawnInterval: 2
+    objectsPerWave: 3
     spawnObjectCount: 0
 --- !u!4 &416129843
 Transform:
@@ -1364,7 +1369,7 @@ GameObject:
   - component: {fileID: 527694252}
   - component: {fileID: 527694253}
   m_Layer: 0
-  m_Name: Boss1BoomPool
+  m_Name: Boom3Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,14 +1397,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527694251}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 5842907413510294070, guid: 3977d913eccad5444ab270ee641c0d77, type: 3}
   poolSize: 5
-  poolType: 0
+  poolType: 8
 --- !u!1 &569061151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7329,13 +7334,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32eaa2759672c34f82de2d6aa5fb6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 12
+  damage: 1
+  size: 2
+  amount: 2
+  range: 3
   bulletPool: {fileID: 1145437481}
   bulletsSFX:
   - {fileID: 8300000, guid: 4f97acf3e3f71604380cd2dd0a6a4656, type: 3}
   - {fileID: 8300000, guid: 96fba3b56280e674794b7550e2e98b5a, type: 3}
   - {fileID: 8300000, guid: 2da238e7480d88c4388115e0cb35f7ac, type: 3}
-  speed: 12
-  damage: 1
 --- !u!1 &1343645034
 GameObject:
   m_ObjectHideFlags: 0
@@ -9260,11 +9268,11 @@ Transform:
   - {fileID: 569061152}
   - {fileID: 451004847}
   - {fileID: 668938908}
+  - {fileID: 527694252}
   - {fileID: 277002028}
   - {fileID: 197918695}
   - {fileID: 1555975406}
   - {fileID: 970176070}
-  - {fileID: 527694252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000151047
