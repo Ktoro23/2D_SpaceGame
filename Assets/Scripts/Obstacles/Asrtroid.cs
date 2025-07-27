@@ -17,6 +17,7 @@ public class Asrtroid : MonoBehaviour
     private int lives;
     private int maxLive;
     private int damage;
+    private int expirenceToGive = 1;
 
     private void OnEnable()
     {
@@ -74,6 +75,7 @@ public class Asrtroid : MonoBehaviour
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
             flashWhite.Rest();
             gameObject.SetActive(false);
+            PlayerMovement.Instance.GetExperience(expirenceToGive);
         }
     }
 

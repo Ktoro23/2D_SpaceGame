@@ -1176,7 +1176,7 @@ MonoBehaviour:
     spawnObjectCount: 0
   - pool: {fileID: 569061153}
     spawnTimer: 0
-    spawnInterval: 3
+    spawnInterval: 1
     objectsPerWave: 10
     spawnObjectCount: 0
   - pool: {fileID: 970176071}
@@ -9668,8 +9668,8 @@ MonoBehaviour:
   energyText: {fileID: 486549491}
   healthSlider: {fileID: 947353874}
   healthText: {fileID: 88080765}
-  experienceSlider: {fileID: 0}
-  experienceText: {fileID: 0}
+  experienceSlider: {fileID: 1084092759}
+  experienceText: {fileID: 70465118}
   pausePanel: {fileID: 825692361}
 --- !u!1 &1957695750
 GameObject:

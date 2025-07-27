@@ -41,7 +41,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int experience;
     [SerializeField] private int currentLevel;
     [SerializeField] private int maxLevel;
+
     [SerializeField] private List<int> playerLevels;
+
 
 
     void Awake()
@@ -71,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
         UIController.Instance.updateEnergySlider(energy, maxEnergy);
         health = maxHealth;
         UIController.Instance.updateHealthSlider(health, maxHealth);
+        experience = 0;
+        UIController.Instance.updateExperienceSlider(experience, playerLevels[currentLevel]);
     }
 
     // Update is called once per frame
@@ -197,5 +201,22 @@ public class PlayerMovement : MonoBehaviour
             engineEffect.Play();
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Boosting, 1f);
         }
+    }
+
+    public void GetExperience(int exp)
+    {
+        experience += exp;
+        UIController.Instance.updateExperienceSlider(experience, playerLevels[currentLevel]);
+        if (experience > playerLevels[currentLevel])
+        {
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        experience -= playerLevels[currentLevel];
+        if (currentLevel < maxLevel - 1) currentLevel++;
+        UIController.Instance.updateExperienceSlider(experience, playerLevels[currentLevel]);
     }
 }
