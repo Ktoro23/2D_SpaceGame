@@ -68,6 +68,11 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         flashWhite = GetComponent<FlashWhite>();
 
+        for (int i = playerLevels.Count; i <maxLevel; i++)
+        {
+            playerLevels.Add(Mathf.CeilToInt (playerLevels[playerLevels.Count - 1] * 1.1f + 15));
+        }
+
         destroyEffectPool = PoolHelper.GetPool(PoolTypes.Boom1);
         energy = maxEnergy;
         UIController.Instance.updateEnergySlider(energy, maxEnergy);
@@ -207,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
     {
         experience += exp;
         UIController.Instance.updateExperienceSlider(experience, playerLevels[currentLevel]);
-        if (experience > playerLevels[currentLevel])
+        if (experience >= playerLevels[currentLevel])
         {
             LevelUp();
         }
@@ -218,5 +223,9 @@ public class PlayerMovement : MonoBehaviour
         experience -= playerLevels[currentLevel];
         if (currentLevel < maxLevel - 1) currentLevel++;
         UIController.Instance.updateExperienceSlider(experience, playerLevels[currentLevel]);
+        PhaserWeapon.Instance.LevelUp();
+        maxHealth++;
+        health = maxHealth;
+        UIController.Instance.updateHealthSlider(health, maxHealth);
     }
 }

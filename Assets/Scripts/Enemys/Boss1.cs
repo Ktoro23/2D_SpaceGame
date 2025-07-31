@@ -16,6 +16,7 @@ public class Boss1 : MonoBehaviour
     private int lives;
     private int maxLives = 100;
     private int damage = 20;
+    private int experienceToGive = 20;
 
 
     private void OnEnable()

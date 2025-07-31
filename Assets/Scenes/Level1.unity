@@ -1169,7 +1169,7 @@ MonoBehaviour:
   maxPos: {fileID: 974018502}
   waveNumber: 0
   waves:
-  - pool: {fileID: 277002029}
+  - pool: {fileID: 569061153}
     spawnTimer: 0
     spawnInterval: 2
     objectsPerWave: 10
@@ -1179,10 +1179,10 @@ MonoBehaviour:
     spawnInterval: 1
     objectsPerWave: 10
     spawnObjectCount: 0
-  - pool: {fileID: 970176071}
+  - pool: {fileID: 277002029}
     spawnTimer: 0
     spawnInterval: 2
-    objectsPerWave: 3
+    objectsPerWave: 8
     spawnObjectCount: 0
 --- !u!4 &416129843
 Transform:

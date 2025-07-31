@@ -44,4 +44,12 @@ public class PhaserWeapon : Weapon
         
     }
 
+    public void LevelUp()
+    {
+        if(weaponLevel < stats.Count -1)
+        {
+            weaponLevel++;  
+        }
+    }
+
 }
