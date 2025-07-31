@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
-            if (asrtroid) asrtroid.TakeDamage(1);
+            if (asrtroid) asrtroid.TakeDamage(1, false);
 
         }
     }

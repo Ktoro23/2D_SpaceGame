@@ -7639,24 +7639,29 @@ MonoBehaviour:
   stats:
   - speed: 5
     damage: 1
-    size: 1
+    size: 1.4
     amount: 1
     range: 1
   - speed: 8
-    damage: 2
-    size: 1.4
-    amount: 2
-    range: 1
-  - speed: 11
-    damage: 3
+    damage: 1
     size: 1.8
     amount: 3
     range: 1
-  - speed: 14
-    damage: 4
+  - speed: 11
+    damage: 1
     size: 2.2
     amount: 4
-    range: 1
+    range: 1.5
+  - speed: 14
+    damage: 1
+    size: 2.2
+    amount: 5
+    range: 1.8
+  - speed: 14
+    damage: 1
+    size: 2.5
+    amount: 7
+    range: 2
   bulletPool: {fileID: 1145437481}
   bulletsSFX:
   - {fileID: 8300000, guid: 4f97acf3e3f71604380cd2dd0a6a4656, type: 3}

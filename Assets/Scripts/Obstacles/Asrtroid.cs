@@ -15,14 +15,21 @@ public class Asrtroid : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
 
     private int lives;
-    private int maxLive;
-    private int damage;
+    private int maxLive = 5;
+    private int damage = 1;
     private int expirenceToGive = 1;
+    float pushX;
+    float pushY;
+
+ 
 
     private void OnEnable()
     {
         lives = maxLive;
         transform.rotation = Quaternion.identity;
+        pushX = Random.Range(-1f, 0);
+        pushY = Random.Range(-1f, 1);
+        if (rb) rb.linearVelocity = new Vector2(pushX, pushY);
     }
 
     void Start()
@@ -31,19 +38,15 @@ public class Asrtroid : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         flashWhite = GetComponent<FlashWhite>();
         destroyEffectPool = PoolHelper.GetPool(PoolTypes.Astroid);
-        
-        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        float pushX = Random.Range(-1f, 0);
-        float pushY = Random.Range(-1f, 1);
+       
 
-        rb.linearVelocity = new Vector2(pushX, pushY);
+        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
 
         float randomScale = Random.Range(0.4f, 1f);
         transform.localScale = new Vector2(randomScale, randomScale);
 
-        maxLive = 5;
         lives = maxLive;
-        damage = 1;
+
     }
 
     
@@ -58,7 +61,7 @@ public class Asrtroid : MonoBehaviour
        
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool giveExperience)
     {
         
         SoundsFXManager.Instance.PlayRandomSoundFXClip(rockHit, transform, 1f);
@@ -75,7 +78,10 @@ public class Asrtroid : MonoBehaviour
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f);
             flashWhite.Rest();
             gameObject.SetActive(false);
-            PlayerMovement.Instance.GetExperience(expirenceToGive);
+            if (giveExperience)
+            {
+                PlayerMovement.Instance.GetExperience(expirenceToGive);
+            }
         }
     }
 

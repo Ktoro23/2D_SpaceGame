@@ -113,6 +113,7 @@ public class Boss1 : MonoBehaviour
             GameObject effect = PoolHelper.GetPool(PoolTypes.Boss1Boom).GetPooledObject(transform.position);
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f, true);
             gameObject.SetActive(false);
+            PlayerMovement.Instance.GetExperience(experienceToGive);
         }
     }
 
@@ -122,7 +123,7 @@ public class Boss1 : MonoBehaviour
         {
 
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
-            if (asrtroid) asrtroid.TakeDamage(damage);
+            if (asrtroid) asrtroid.TakeDamage(damage, false);
             
         }
         else if (collision.gameObject.CompareTag("Player"))

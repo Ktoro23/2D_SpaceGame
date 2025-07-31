@@ -23,7 +23,7 @@ public class PhaserBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
-            if (asrtroid) asrtroid.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
+            if (asrtroid) asrtroid.TakeDamage(weapon.stats[weapon.weaponLevel].damage, true);
             gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Boss")) 
