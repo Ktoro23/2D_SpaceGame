@@ -157,11 +157,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
             if (asrtroid) asrtroid.TakeDamage(1, false);
-
+            else if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                if (enemy) enemy.TakeDamage(1);
+            }
         }
+        
     }
 
     public void TakeDamage(int damage)

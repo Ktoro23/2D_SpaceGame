@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1083510958487314370
+--- !u!1 &3415665997844334858
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8004637156875048149}
-  - component: {fileID: 3970071981831852352}
-  - component: {fileID: 4567042445743363949}
-  - component: {fileID: -9154395789941466979}
-  - component: {fileID: 4681882878243758410}
+  - component: {fileID: 1280745532548749677}
+  - component: {fileID: 3121868414085610161}
+  - component: {fileID: 6955987722660526967}
+  - component: {fileID: 332828768554094608}
+  - component: {fileID: 5589085391967846987}
   m_Layer: 0
-  m_Name: Critter1_Burn
+  m_Name: BeetlePop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8004637156875048149
+--- !u!4 &1280745532548749677
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083510958487314370}
+  m_GameObject: {fileID: 3415665997844334858}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.040002286, y: -1.1094396, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.188225, y: -0.37619275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!212 &3970071981831852352
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3121868414085610161
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083510958487314370}
+  m_GameObject: {fileID: 3415665997844334858}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -79,28 +79,28 @@ SpriteRenderer:
   m_SortingLayerID: 1682503449
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: -1754834975, guid: 9aa4cbcc1cc92fb4782c27f3831edf30, type: 3}
+  m_Sprite: {fileID: -649476515, guid: 7b6f89e7be87aa5479645b27ae703f10, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7, y: 0.7}
+  m_Size: {x: 1.2, y: 1.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4567042445743363949
+--- !u!95 &6955987722660526967
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083510958487314370}
+  m_GameObject: {fileID: 3415665997844334858}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f19cf6350176634aab005fb79f91a16, type: 2}
+  m_Controller: {fileID: 9100000, guid: 41cbd66bd15dbf043983e7c066cbbf4e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -112,27 +112,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-9154395789941466979
+--- !u!114 &332828768554094608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083510958487314370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c84a5d08be2b441b5ffa000e8ea2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4681882878243758410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083510958487314370}
+  m_GameObject: {fileID: 3415665997844334858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7660e2fbb642a614b8db996e85adfed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5589085391967846987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415665997844334858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c84a5d08be2b441b5ffa000e8ea2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

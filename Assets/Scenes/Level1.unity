@@ -1169,7 +1169,7 @@ MonoBehaviour:
   maxPos: {fileID: 974018502}
   waveNumber: 0
   waves:
-  - pool: {fileID: 569061153}
+  - pool: {fileID: 2079702468}
     spawnTimer: 0
     spawnInterval: 2
     objectsPerWave: 10
@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 0000000063b36059f15e1e56d570fa5fe74be569
+  m_ApplyToSortingLayers: 0000000063b36059f15e1e56d570fa5fe74be56919f74864
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1904,6 +1904,53 @@ MonoBehaviour:
   prefab: {fileID: 2029151512926048353, guid: c177640aad7e0374e8d067bf1956b325, type: 3}
   poolSize: 1
   poolType: 1
+--- !u!1 &676916600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676916601}
+  - component: {fileID: 676916602}
+  m_Layer: 0
+  m_Name: BeetlePopPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &676916601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676916600}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.95181, y: -0.44401, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676916602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676916600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3415665997844334858, guid: 1d46e5db12e8e434cba1c938181f70a6, type: 3}
+  poolSize: 2
+  poolType: 10
 --- !u!1 &721591672
 GameObject:
   m_ObjectHideFlags: 0
@@ -7542,7 +7589,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1444830961
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -8489,7 +8536,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1444830961
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1549015712, guid: 9e7d4d8a02a1945438ef1dcbce6ba172, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9714,6 +9761,8 @@ Transform:
   - {fileID: 197918695}
   - {fileID: 1555975406}
   - {fileID: 970176070}
+  - {fileID: 2079702467}
+  - {fileID: 676916601}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000151047
@@ -9856,6 +9905,53 @@ Transform:
   - {fileID: 607435459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2079702466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079702467}
+  - component: {fileID: 2079702468}
+  m_Layer: 0
+  m_Name: BeetlePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079702467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079702466}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.74938, y: -1.58628, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2079702468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079702466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3153430687229612955, guid: fa1e82fa10efadf41bc64bf05242f852, type: 3}
+  poolSize: 5
+  poolType: 9
 --- !u!1001 &1705067321258686210
 PrefabInstance:
   m_ObjectHideFlags: 0

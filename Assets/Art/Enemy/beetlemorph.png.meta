@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 84d7b1bba6e750d41a81490b93d54cd5
+guid: 7aca4cbf544f945449230ccf24eba108
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4191511602922700279
-    second: layer2_0
+      213: 5588965506718041536
+    second: beetlemorph_0
   - first:
-      213: 7012570378591224418
-    second: layer2_1
+      213: 8176062168316702862
+    second: beetlemorph_1
+  - first:
+      213: -3962547319695902046
+    second: beetlemorph_2
+  - first:
+      213: 1408924143864969165
+    second: beetlemorph_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -99,49 +105,106 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: layer2_0
+      name: beetlemorph_0
       rect:
         serializedVersion: 2
-        x: 62
-        y: 57
-        width: 788
-        height: 1022
+        x: 0
+        y: 0
+        width: 120
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9024ddb9762c4d5c0800000000000000
-      internalID: -4191511602922700279
+      spriteID: 43d105fb0c3a0a84297c646b52ccf0bf
+      internalID: -1168863765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: layer2_1
+      name: beetlemorph_1
       rect:
         serializedVersion: 2
-        x: 1065
-        y: 67
-        width: 714
-        height: 1003
+        x: 120
+        y: 0
+        width: 120
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2624b5aea97a15160800000000000000
-      internalID: 7012570378591224418
+      spriteID: 4bc9cfb505c8dcc40bef56ae9a10fee9
+      internalID: 2102619117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beetlemorph_2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b14cde4c1f32a4783c0e2f4c5ba727
+      internalID: -1965782128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beetlemorph_3
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f8124565dd8ece4482ef1065929f82b
+      internalID: 1567893071
       vertices: []
       indices: 
       edges: []
@@ -150,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: e8cb6a523610db24db4b33b616683864
     internalID: 0
     vertices: []
     indices: 
@@ -158,10 +221,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":120.0,"y":120.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      layer2_0: -4191511602922700279
-      layer2_1: 7012570378591224418
+      beetlemorph_0: -1168863765
+      beetlemorph_1: 2102619117
+      beetlemorph_2: -1965782128
+      beetlemorph_3: 1567893071
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -100,5 +100,6 @@ public enum PoolTypes
     Critter1_Zapped,
     Boss1,
     Boss1Boom,
-
+    Bettle,
+    BeetlePop,
 }

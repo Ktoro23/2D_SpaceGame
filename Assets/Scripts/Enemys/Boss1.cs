@@ -108,7 +108,7 @@ public class Boss1 : MonoBehaviour
     {
         SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossHit, 1f, true);
         lives -= damage;
-        if (lives < 0)
+        if (lives <= 0)
         {
             GameObject effect = PoolHelper.GetPool(PoolTypes.Boss1Boom).GetPooledObject(transform.position);
             SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f, true);
