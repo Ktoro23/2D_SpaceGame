@@ -17,6 +17,8 @@ public class SoundsFXManager : MonoBehaviour
     public AudioClip bossHit;
     public AudioClip bossCharge;
     public AudioClip bossSpawn;
+    public AudioClip bettleHit;
+    public AudioClip beetleDestroy;
 
 
     private void Awake()

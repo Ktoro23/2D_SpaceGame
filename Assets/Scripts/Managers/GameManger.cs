@@ -8,6 +8,7 @@ public class GameManger : MonoBehaviour
     public static GameManger Instance;
 
     public float worldSpeed;
+    public float adjustedworldSpeed;
 
     public int critterCount;
     private GameObject boss1;
@@ -36,6 +37,8 @@ public class GameManger : MonoBehaviour
 
     private void Update()
     {
+        adjustedworldSpeed = worldSpeed * Time.deltaTime;
+
         if (critterCount > 5)
         {
             critterCount = 0;

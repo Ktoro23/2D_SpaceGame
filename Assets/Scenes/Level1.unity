@@ -1171,7 +1171,7 @@ MonoBehaviour:
   waves:
   - pool: {fileID: 2079702468}
     spawnTimer: 0
-    spawnInterval: 2
+    spawnInterval: 1
     objectsPerWave: 10
     spawnObjectCount: 0
   - pool: {fileID: 569061153}
@@ -7769,6 +7769,8 @@ MonoBehaviour:
   bossHit: {fileID: 8300000, guid: c433a1a6c1210164587e0d1aededb3f9, type: 3}
   bossCharge: {fileID: 8300000, guid: 4ae03ffc10eaf7242b44c85d75794c6f, type: 3}
   bossSpawn: {fileID: 8300000, guid: d9d3f1d873722e14f8161a2376376014, type: 3}
+  bettleHit: {fileID: 8300000, guid: 8ff71063532eeb4428a2054fb2205141, type: 3}
+  beetleDestroy: {fileID: 8300000, guid: f083af98273ccbd4fbe3cea24510794e, type: 3}
   soundFXObject: {fileID: 469970845}
 --- !u!114 &1343645037
 MonoBehaviour:
