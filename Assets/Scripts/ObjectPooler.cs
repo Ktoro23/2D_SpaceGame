@@ -102,4 +102,5 @@ public enum PoolTypes
     Boss1Boom,
     Bettle,
     BeetlePop,
+    LostWhale,
 }

@@ -1184,6 +1184,31 @@ MonoBehaviour:
     spawnInterval: 2
     objectsPerWave: 8
     spawnObjectCount: 0
+  - pool: {fileID: 277002029}
+    spawnTimer: 0
+    spawnInterval: 1.2
+    objectsPerWave: 12
+    spawnObjectCount: 0
+  - pool: {fileID: 569061153}
+    spawnTimer: 0
+    spawnInterval: 0.5
+    objectsPerWave: 50
+    spawnObjectCount: 0
+  - pool: {fileID: 2079702468}
+    spawnTimer: 0
+    spawnInterval: 1
+    objectsPerWave: 20
+    spawnObjectCount: 0
+  - pool: {fileID: 882855528}
+    spawnTimer: 0
+    spawnInterval: 1
+    objectsPerWave: 1
+    spawnObjectCount: 0
+  - pool: {fileID: 569061153}
+    spawnTimer: 0
+    spawnInterval: 0.5
+    objectsPerWave: 40
+    spawnObjectCount: 0
 --- !u!4 &416129843
 Transform:
   m_ObjectHideFlags: 0
@@ -2238,6 +2263,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &882855526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 882855527}
+  - component: {fileID: 882855528}
+  m_Layer: 0
+  m_Name: LostWhalePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &882855527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882855526}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.95181, y: -0.44401, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1957695751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &882855528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882855526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b6de06351d0b94f8295b15fec62db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1705176312483202249, guid: cf4dce50cf63a944889a66a1e44bd889, type: 3}
+  poolSize: 1
+  poolType: 11
 --- !u!1 &947353872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,12 +2472,180 @@ Transform:
   m_GameObject: {fileID: 974018501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: -5, z: 0}
+  m_LocalPosition: {x: 15, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 416129843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &993162395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993162401}
+  - component: {fileID: 993162400}
+  - component: {fileID: 993162399}
+  - component: {fileID: 993162398}
+  - component: {fileID: 993162397}
+  - component: {fileID: 993162396}
+  m_Layer: 12
+  m_Name: Locustmorph
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &993162396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993162395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099f7a26f99b363438f2bfe9231cae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &993162397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993162395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7660e2fbb642a614b8db996e85adfed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &993162398
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993162395}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.7, y: 1.2000003}
+  m_Direction: 0
+--- !u!114 &993162399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993162395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab1ee44650dd644d868c52d79e78f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 0
+  maxLives: 10
+  damage: 2
+  experienceToGive: 2
+--- !u!212 &993162400
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993162395}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1682503449
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1782644447, guid: b27c00d90f21a97409544f10f0c50afd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.2, y: 1.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &993162401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993162395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &993997485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,6 +2872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldSpeed: 1
+  adjustedworldSpeed: 0
   critterCount: 0
 --- !u!1 &1084092757
 GameObject:
@@ -7692,22 +7933,22 @@ MonoBehaviour:
   - speed: 8
     damage: 1
     size: 1.8
-    amount: 3
+    amount: 2
     range: 1
   - speed: 11
     damage: 1
     size: 2.2
-    amount: 4
+    amount: 3
     range: 1.5
   - speed: 14
     damage: 1
     size: 2.2
-    amount: 5
+    amount: 4
     range: 1.8
   - speed: 14
     damage: 1
     size: 2.5
-    amount: 7
+    amount: 5
     range: 2
   bulletPool: {fileID: 1145437481}
   bulletsSFX:
@@ -7771,6 +8012,9 @@ MonoBehaviour:
   bossSpawn: {fileID: 8300000, guid: d9d3f1d873722e14f8161a2376376014, type: 3}
   bettleHit: {fileID: 8300000, guid: 8ff71063532eeb4428a2054fb2205141, type: 3}
   beetleDestroy: {fileID: 8300000, guid: f083af98273ccbd4fbe3cea24510794e, type: 3}
+  locustCharge: {fileID: 8300000, guid: 246d152c2ba87ca43a7f4ed1c75f5354, type: 3}
+  locustDestroy: {fileID: 8300000, guid: 26eadf5b5af7bad4b86e57c48184a630, type: 3}
+  locustHit: {fileID: 8300000, guid: 7ece515b15fc7d142a59ac4f69afb60f, type: 3}
   soundFXObject: {fileID: 469970845}
 --- !u!114 &1343645037
 MonoBehaviour:
@@ -9765,6 +10009,7 @@ Transform:
   - {fileID: 970176070}
   - {fileID: 2079702467}
   - {fileID: 676916601}
+  - {fileID: 882855527}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000151047
@@ -10318,3 +10563,4 @@ SceneRoots:
   - {fileID: 1120522730}
   - {fileID: 1957695751}
   - {fileID: 126000457}
+  - {fileID: 993162401}
