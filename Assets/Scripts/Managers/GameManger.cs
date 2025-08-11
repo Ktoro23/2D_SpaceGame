@@ -28,6 +28,10 @@ public class GameManger : MonoBehaviour
 
         action = new InputSystem_Actions();
         action.Player.Pause.performed += Paused;
+
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60; 
     }
 
     private void Start()

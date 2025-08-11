@@ -5,8 +5,8 @@ public class Locustmorph : Enemy
     public override void Start()
     {
         base.Start();
-        hitSound = SoundsFXManager.Instance.bettleHit;
-        destroySound = SoundsFXManager.Instance.beetleDestroy;
+        hitSound = SoundsFXManager.Instance.locustHit;
+        destroySound = SoundsFXManager.Instance.locustDestroy;
         speedX = Random.Range(0.5f, 0.8f);
         speedY = Random.Range(-0.9f, 0.5f);
     }
