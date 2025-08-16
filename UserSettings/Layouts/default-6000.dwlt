@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -255,8 +255,8 @@ MonoBehaviour:
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 5.4110723, y: 1.6908035, z: 90.00001}
     speed: 2
-    m_Value: {x: -0.47037292, y: -0.25961667, z: 4.353508}
+    m_Value: {x: 0.26815212, y: 0.69809127, z: 82.19384}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 10.775102
     speed: 2
-    m_Value: 6.9347606
+    m_Value: 7.8976884
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1634,7 +1634,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Managers
+    - Assets/Art/Enemy
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Managers
+  - Assets/Art/Enemy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity\Unity Projects\Space - 2D Game\2D_SpaceGame
   m_LockTracker:
@@ -1708,10 +1708,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3e120100
-    m_LastClickedInstanceID: 70206
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300007efbfeff74740000429500004c8600003676000032460000907c0000ce7f0b00d2760000e48c29008a2801001c1f01005e640000ba6400006ed70000e8d80000ceb20000000000003cc4000074b3000010c00000b26f000056b40000c8b800000ccf000032b90000a0b90000acb900009cba0000aeba0000aad70000eebb0000d8bb000042b700003eb7000050cc0000d0b7000024bf0000
+    m_ExpandedInstanceIDs: c62300007efbfeff74740000429500004c8600003676000032460000907c0000ce7f0b00d2760000e48c29008a2801001c1f01005e640000ba6400006ed70000e8d80000ceb20000000000003cc4000074b3000010c00000b26f000056b40000c8b800000ccf000032b90000a0b90000acb900009cba0000aeba0000aad70000eebb0000d8bb000042b700003eb7000050cc0000d0b7000024bf0000ecb70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1848,7 +1848,8 @@ MonoBehaviour:
     m_SaveData: []
     m_ContainerData: []
     m_OverlaysVisible: 1
-  m_ObjectsLockedBeforeSerialization: []
+  m_ObjectsLockedBeforeSerialization:
+  - {fileID: 5662260590786787671, guid: 6b2f38ddf5a1f9d43bf89e8490194ebb, type: 3}
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
     m_CachedPref: 160
@@ -1859,7 +1860,7 @@ MonoBehaviour:
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
-    m_IsLocked: 0
+    m_IsLocked: 1
   m_PreviewWindow: {fileID: 0}
 --- !u!114 &22
 MonoBehaviour:
@@ -1899,7 +1900,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 70206
+  m_LastSelectedObjectID: -2594
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52

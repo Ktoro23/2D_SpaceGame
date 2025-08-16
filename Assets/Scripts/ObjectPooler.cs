@@ -104,4 +104,5 @@ public enum PoolTypes
     BeetlePop,
     LostWhale,
     LocustPop,
+    LocustMoprh,
 }
