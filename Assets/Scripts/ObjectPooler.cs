@@ -105,4 +105,6 @@ public enum PoolTypes
     LostWhale,
     LocustPop,
     LocustMoprh,
+    Boss2,
+    SpecialAttWhale,
 }

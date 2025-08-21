@@ -1,41 +1,40 @@
 using UnityEngine;
 
-public class Boss1 : MonoBehaviour
+public class Boss1 : Enemy
 {
     private Animator animator;
-    private ObjectPooler destroyEffectPool;
-
-
-    private float speedX;
-    private float speedY;
+ 
     private bool Charging;
 
     private float switchInterval;
     private float switchTimer;
 
-    private int lives;
-    private int maxLives = 100;
-    private int damage = 20;
-    private int experienceToGive = 20;
+    //private ObjectPooler destroyEffectPool;
 
-
-    private void OnEnable()
+    public override void Awake()
     {
+        base.Awake();
+        animator = GetComponent<Animator>();
+    }
+    public override void OnEnable()
+    {
+        base.OnEnable();
         EnterChargeState();
-        lives = maxLives;
+        
     }
-    private void Awake()
+   
+    public override void Start()
     {
-        animator = GetComponent<Animator>();    
-    }
-    void Start()
-    {
+        base.Start();
         destroyEffectPool = PoolHelper.GetPool(PoolTypes.Boss1Boom);
+        hitSound = SoundsFXManager.Instance.bossHit;
+        destroySound = SoundsFXManager.Instance.boom2;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();  
         float playerPosition = PlayerMovement.Instance.transform.position.x;
         if (switchTimer > 0)
         {
@@ -86,7 +85,7 @@ public class Boss1 : MonoBehaviour
     void EnterPatrolState()
     {
         speedX = 0f;
-        speedY = Random.Range(-2f, 2f);
+        speedY = Random.Range(-1f, 1f);
         switchInterval = Random.Range(5f, 10f);
         switchTimer = switchInterval;
         Charging = false;
@@ -97,39 +96,29 @@ public class Boss1 : MonoBehaviour
     {
         animator.SetBool("Charging", true);
         if (!Charging) SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossCharge, 1f, true);
-        speedX = -10f;
+        speedX = -5f;
         speedY = 0;
         switchInterval = Random.Range(0.6f, 1.5f);
         switchTimer = switchInterval;
         Charging = true;        
     }
 
-    public void TakeDamage(int damage)
-    {
-        SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.bossHit, 1f, true);
-        lives -= damage;
-        if (lives <= 0)
-        {
-            GameObject effect = PoolHelper.GetPool(PoolTypes.Boss1Boom).GetPooledObject(transform.position);
-            SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.boom2, 1f, true);
-            gameObject.SetActive(false);
-            PlayerMovement.Instance.GetExperience(experienceToGive);
-        }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
-            if (asrtroid) asrtroid.TakeDamage(damage, false);
-            
+            if (asrtroid) asrtroid.TakeDamage(damage, false);           
         }
-        else if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
-            if (player) player.TakeDamage(damage);
-        }
+        
+    }
+
+    protected override void PlayDeathAnim()
+    {
+
+        GameObject effect = PoolHelper.GetPool(PoolTypes.Boss1Boom).GetPooledObject(transform.position, transform.rotation);
+
     }
 }

@@ -1,12 +1,23 @@
 # ninja log v5
+0	4195	7737652899333756	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	eebe96c4d685b3b6
 59	1843	7737652875266385	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	668e39a65042794f
 28	3481	7737652890839903	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	2f8aeb1469463d0a
 22	3488	7737652891109199	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	934abe77a291ed29
-50	3490	7737652891972037	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f17e1a4cf22b9f35
-8	3657	7737652893228750	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3ac32b72986543e9
 14	3659	7737652893488060	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	b178ef4fd2e38ad6
-1845	3733	7737652893916944	D:/Unity/Unity Projects/Space - 2D Game/2D_SpaceGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2y2o6y63/obj/arm64-v8a/libswappywrapper.so	38269285636fbc9c
+50	3490	7737652891972037	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f17e1a4cf22b9f35
 43	3875	7737652896311076	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d60e31950f7c4520
+8	3657	7737652893228750	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3ac32b72986543e9
 36	3957	7737652897137410	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	236146013bd9fe34
-0	4195	7737652899333756	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	eebe96c4d685b3b6
+1845	3733	7737652893916944	D:/Unity/Unity Projects/Space - 2D Game/2D_SpaceGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2y2o6y63/obj/arm64-v8a/libswappywrapper.so	38269285636fbc9c
 4196	4433	7737652901954941	D:/Unity/Unity Projects/Space - 2D Game/2D_SpaceGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2y2o6y63/obj/arm64-v8a/libgame.so	2804dc19e596b80c
+62	612	7774302944477351	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	668e39a65042794f
+613	1342	7774302951465680	D:/Unity/Unity Projects/Space - 2D Game/2D_SpaceGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2y2o6y63/obj/arm64-v8a/libswappywrapper.so	38269285636fbc9c
+22	1962	7774302957676646	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	934abe77a291ed29
+37	1984	7774302958095542	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	2f8aeb1469463d0a
+27	2000	7774302958215232	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3ac32b72986543e9
+51	2011	7774302958334896	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f17e1a4cf22b9f35
+17	2111	7774302959534746	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	b178ef4fd2e38ad6
+56	2337	7774302961597452	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d60e31950f7c4520
+43	2346	7774302961603792	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	236146013bd9fe34
+32	2459	7774302963039243	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	eebe96c4d685b3b6
+2459	2642	7774302964899131	D:/Unity/Unity Projects/Space - 2D Game/2D_SpaceGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2y2o6y63/obj/arm64-v8a/libgame.so	2804dc19e596b80c

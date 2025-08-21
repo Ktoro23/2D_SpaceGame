@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Asrtroid : MonoBehaviour
 {
+    public static Asrtroid Instance;
     private SpriteRenderer spriteRenderer;
     private ObjectPooler destroyEffectPool;
     

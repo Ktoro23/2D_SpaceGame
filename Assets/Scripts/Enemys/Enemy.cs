@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static Enemy Instance;
     protected SpriteRenderer spriteRenderer;
     private FlashWhite flashWhite;
+    protected ObjectPooler destroyEffectPool;
 
-    [SerializeField] private int lives;
-    [SerializeField] private int maxLives;
-    [SerializeField] private int damage;
-    [SerializeField] private int experienceToGive;
+    [SerializeField] protected int lives;
+    [SerializeField] protected int maxLives;
+    [SerializeField] protected int damage;
+    [SerializeField] protected int experienceToGive;
 
     protected AudioClip hitSound;
     protected AudioClip destroySound;
@@ -16,13 +18,18 @@ public class Enemy : MonoBehaviour
     protected float speedX = 0;
     protected float speedY = 0;
 
+
+    public virtual void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     public virtual void OnEnable()
     {
         lives = maxLives;
     }
     public virtual void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        
         flashWhite = GetComponent<FlashWhite>();
     }
 
@@ -32,7 +39,7 @@ public class Enemy : MonoBehaviour
         transform.position += new Vector3(speedX * Time.deltaTime, speedY * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -41,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         lives -= damage;
         SoundsFXManager.Instance.PlaySoundFXClip(hitSound, 1f, true);
@@ -52,7 +59,7 @@ public class Enemy : MonoBehaviour
         else
         {
             SoundsFXManager.Instance.PlaySoundFXClip(destroySound, 1f);
-            GameObject effect = PoolHelper.GetPool(PoolTypes.BeetlePop).GetPooledObject(transform.position, transform.rotation);
+            PlayDeathAnim();
             PlayerMovement.Instance.GetExperience(experienceToGive);
             gameObject.SetActive(false);
             flashWhite.Rest();
@@ -60,4 +67,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    protected virtual void PlayDeathAnim()
+    {
+        GameObject effect = PoolHelper.GetPool(PoolTypes.BeetlePop).GetPooledObject(transform.position, transform.rotation);
+    }
 }

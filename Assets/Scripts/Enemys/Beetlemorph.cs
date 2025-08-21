@@ -34,4 +34,10 @@ public class Beetlemorph : Enemy
         float sine = Mathf.Sin(timer * frequency) * amplitude;
         transform.position = new Vector3(transform.position.x, centerY + sine);
     }
+    protected override void PlayDeathAnim()
+    {
+        
+        GameObject effect = PoolHelper.GetPool(PoolTypes.BeetlePop).GetPooledObject(transform.position, transform.rotation);
+
+    }
 }
