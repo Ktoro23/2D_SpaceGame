@@ -4,10 +4,11 @@ public class PhaserBullet : MonoBehaviour
 {
 
     PhaserWeapon weapon;
-
+    private SpriteRenderer spriteRenderer;
     private void Start()
     {
         weapon = PhaserWeapon.Instance;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -37,6 +38,25 @@ public class PhaserBullet : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+    }
+
+    private int GetDamage()
+    {
+        // If power-up active, boost damage
+        if (PowerUpManager.Instance != null && PowerUpManager.Instance.IsPoweredUp)
+            return weapon.stats[weapon.weaponLevel].damage + PowerUpManager.Instance.extraDamage;
+
+        return weapon.stats[weapon.weaponLevel].damage;
+    }
+
+    public void UpdateSprite()
+    {
+        if (PowerUpManager.Instance != null && spriteRenderer != null)
+        {
+            spriteRenderer.sprite = PowerUpManager.Instance.IsPoweredUp ?
+                PowerUpManager.Instance.poweredBulletSprite :
+                PowerUpManager.Instance.normalBulletSprite;
+        }
     }
 }
 

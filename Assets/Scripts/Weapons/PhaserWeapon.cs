@@ -7,9 +7,6 @@ public class PhaserWeapon : Weapon
     [SerializeField] private ObjectPooler bulletPool;
     [SerializeField] private AudioClip[] bulletsSFX;
 
-    
-
-
     void Awake()
     {
         if (Instance != null)
