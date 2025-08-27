@@ -107,4 +107,6 @@ public enum PoolTypes
     LocustMoprh,
     Boss2,
     SpecialAttWhale,
+    PowerUpAtt,
+    PowerUpShield,
 }

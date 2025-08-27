@@ -1,11 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpecialAttackRocket : MonoBehaviour
 {
     [Header("Rocket Settings")]
     public float speed = 10f;       // Speed of the rocket
     public float targetX = 20f;     // Where it stops/destroys
-    public int damage = 1000;          // How much damage the rocket deals
+    public int damage = 1000;
+    public int health = 1;
+    
+        // How much damage the rocket deals
 
     void Update()
     {
@@ -18,6 +21,11 @@ public class SpecialAttackRocket : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        
+        if (health <= 0)
+        {
+            DestroySpecialAtt();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +34,7 @@ public class SpecialAttackRocket : MonoBehaviour
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
+            health = health--;
             enemy.TakeDamage(damage);
             return;
         }
@@ -34,10 +43,17 @@ public class SpecialAttackRocket : MonoBehaviour
         Asrtroid asteroid = collision.gameObject.GetComponent<Asrtroid>();
         if (asteroid != null)
         {
+            health = health--;
             asteroid.TakeDamage(damage, true);
             return;
         }
     }
 
+    public void DestroySpecialAtt()
+    {
+      
+            gameObject.SetActive (false);
+       
+    }
 }
 

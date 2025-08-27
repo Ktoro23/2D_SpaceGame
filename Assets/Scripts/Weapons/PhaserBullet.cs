@@ -5,10 +5,16 @@ public class PhaserBullet : MonoBehaviour
 
     PhaserWeapon weapon;
     private SpriteRenderer spriteRenderer;
-    private void Start()
+    private void Awake()
     {
         weapon = PhaserWeapon.Instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnEnable()
+    {
+
+        UpdateSprite();
     }
     private void Update()
     {
@@ -21,6 +27,7 @@ public class PhaserBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        int dmg = GetDamage();
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             Asrtroid asrtroid = collision.gameObject.GetComponent<Asrtroid>();
@@ -31,12 +38,13 @@ public class PhaserBullet : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy) enemy.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
-            gameObject.SetActive(false);
-        }
+       
+         else if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                    if (enemy) enemy.TakeDamage(dmg);
+                    gameObject.SetActive(false);
+                }
 
     }
 

@@ -86,5 +86,9 @@ public class Asrtroid : MonoBehaviour
         }
     }
 
-   
+    public int GetLives()
+    {
+        return lives;
+    }
+
 }

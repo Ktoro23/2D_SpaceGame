@@ -44,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private List<int> playerLevels;
 
+    [SerializeField] private GameObject shieldVisual;   // assign in Inspector
+    [SerializeField] private float shieldDuration = 5f; // how long shield lasts
+    private bool isShieldActive = false;
+
 
 
     void Awake()
@@ -170,6 +174,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isShieldActive)
+        {
+            Debug.Log("Shield absorbed the hit!");
+            return; // no damage taken
+        }
+
         health -= damage;
         UIController.Instance.updateHealthSlider(health, maxHealth);
         SoundsFXManager.Instance.PlaySoundFXClip(SoundsFXManager.Instance.Hit, 1f);
@@ -231,5 +241,22 @@ public class PlayerMovement : MonoBehaviour
         maxHealth++;
         health = maxHealth;
         UIController.Instance.updateHealthSlider(health, maxHealth);
+    }
+
+    public void ActivateShield()
+    {
+        if (!isShieldActive)
+            StartCoroutine(ShieldRoutine());
+    }
+
+    private IEnumerator ShieldRoutine()
+    {
+        isShieldActive = true;
+        if (shieldVisual != null) shieldVisual.SetActive(true);
+
+        yield return new WaitForSeconds(shieldDuration);
+
+        isShieldActive = false;
+        if (shieldVisual != null) shieldVisual.SetActive(false);
     }
 }

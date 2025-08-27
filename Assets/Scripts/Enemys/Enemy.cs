@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         lives -= damage;
+        Debug.Log($"{gameObject.name} took {damage}, remaining lives = {lives}");
         SoundsFXManager.Instance.PlaySoundFXClip(hitSound, 1f, true);
         if (lives > 0)
         {
@@ -70,5 +71,10 @@ public class Enemy : MonoBehaviour
     protected virtual void PlayDeathAnim()
     {
         GameObject effect = PoolHelper.GetPool(PoolTypes.BeetlePop).GetPooledObject(transform.position, transform.rotation);
+    }
+
+    public int GetLives()
+    {
+        return lives;
     }
 }
