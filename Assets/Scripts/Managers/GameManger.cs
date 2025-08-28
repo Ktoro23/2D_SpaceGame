@@ -108,6 +108,10 @@ public class GameManger : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(+ 1);
+    }
     public void GameOver()
     {
         StartCoroutine(ShowGameOverScreen());

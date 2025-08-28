@@ -17,4 +17,23 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadNextLevel()
+    {
+        // Get the current scene index
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Get the next scene index
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // If it's the last scene, loop back to the first one (optional)
+        if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+
+        // Load the next scene
+        SceneManager.LoadScene(nextSceneIndex);
+    }
 }
+
