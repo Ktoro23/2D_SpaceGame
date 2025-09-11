@@ -19,7 +19,7 @@ public class PhaserBullet : MonoBehaviour
     private void Update()
     {
         transform.position += new Vector3(weapon.stats[weapon.weaponLevel].speed * Time.deltaTime, 0f);
-        if (transform.position.x > 10.6)
+        if (transform.position.x > 10.9)
         {
             gameObject.SetActive(false);
         }

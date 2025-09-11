@@ -13,7 +13,12 @@ public class GameManger : MonoBehaviour
     public int critterCount;
     private GameObject boss1;
 
-   // InputAction pauseAction;
+  
+    public GameObject levelCompleteUI;
+    public GameObject gameplayUI;
+    public GameObject bgMusic;
+
+    // InputAction pauseAction;
     InputSystem_Actions action;
     void Awake()
     {
@@ -110,7 +115,9 @@ public class GameManger : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(+ 1);
+        Time.timeScale = 1f; // make sure game unpauses
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentIndex + 1);
     }
     public void GameOver()
     {
@@ -126,5 +133,14 @@ public class GameManger : MonoBehaviour
     public void SetWorldSpeed(float speed)
     {
         worldSpeed = speed;
+    }
+
+
+    public void ShowLevelComplete()
+    {
+        gameplayUI.SetActive(false);
+        levelCompleteUI.SetActive(true);
+        bgMusic.SetActive(false);
+        Time.timeScale = 0f;
     }
 }
