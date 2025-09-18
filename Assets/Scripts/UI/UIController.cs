@@ -7,11 +7,11 @@ public class UIController : MonoBehaviour
     public static UIController Instance;
 
 
-    [SerializeField] private Slider energySlider;
+    [SerializeField] private Image energyImage;
     [SerializeField] private TMP_Text energyText;
-    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Image healthImage;
     [SerializeField] private TMP_Text healthText;
-    [SerializeField] private Slider experienceSlider;
+    [SerializeField] private Image experienceImage;
     [SerializeField] private TMP_Text experienceText;
     public GameObject pausePanel;
 
@@ -28,24 +28,24 @@ public class UIController : MonoBehaviour
     }
     public void updateEnergySlider(float current, float max)
     {
-        energySlider.maxValue = max;
-        energySlider.value = Mathf.RoundToInt(current);      
-        energyText.text = energySlider.value + "/" + energySlider.maxValue;
+        float normalizedCurrent =  Mathf.InverseLerp(0, max, current);
+        energyImage.fillAmount = normalizedCurrent;      
+        energyText.text = current.ToString("F0") + "/" + max.ToString("F0");
 
     }
     public void updateHealthSlider(float current, float max)
     {
-        healthSlider.maxValue = max;
-        healthSlider.value = Mathf.RoundToInt(current);      
-        healthText.text = healthSlider.value + "/" + healthSlider.maxValue;
+        float normalizedCurrent = Mathf.InverseLerp(0, max, current);
+        healthImage.fillAmount = normalizedCurrent;
+        healthText.text = current.ToString("F0") + "/" + max.ToString("F0");
 
     }
 
     public void updateExperienceSlider(float current, float max)
     {
-        experienceSlider.maxValue = max;
-        experienceSlider.value = Mathf.RoundToInt(current);
-        experienceText.text = experienceSlider.value + "/" + experienceSlider.maxValue;
+        float normalizedCurrent = Mathf.InverseLerp(0, max, current);
+        experienceImage.fillAmount = normalizedCurrent;
+        experienceText.text = current.ToString("F0") + "/" + max.ToString("F0");
 
     }
 }

@@ -957,10 +957,10 @@ TextureImporter:
       name: Elements-01_25
       rect:
         serializedVersion: 2
-        x: 851
+        x: 845
         y: 2617
-        width: 569
-        height: 128
+        width: 575
+        height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
