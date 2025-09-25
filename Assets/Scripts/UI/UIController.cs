@@ -13,6 +13,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private Image experienceImage;
     [SerializeField] private TMP_Text experienceText;
+
+    [SerializeField] private TMP_Text coinText;
+
     public GameObject pausePanel;
 
     void Awake()
@@ -47,5 +50,13 @@ public class UIController : MonoBehaviour
         experienceImage.fillAmount = normalizedCurrent;
         experienceText.text = current.ToString("F0") + "/" + max.ToString("F0");
 
+    }
+
+    public void UpdateCoinCount(int newCoinCount)
+    {
+        if (coinText != null)
+        {
+            coinText.text = newCoinCount.ToString("F0");
+        }
     }
 }

@@ -109,4 +109,5 @@ public enum PoolTypes
     SpecialAttWhale,
     PowerUpAtt,
     PowerUpShield,
+    Coin,
 }
