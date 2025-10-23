@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManger : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManger : MonoBehaviour
 
     public float worldSpeed;
     public float adjustedworldSpeed;
+    public float baseScrollSpeed;
 
     public int critterCount;
     private GameObject boss1;
@@ -44,6 +46,8 @@ public class GameManger : MonoBehaviour
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+
+        baseScrollSpeed = worldSpeed;
 
         LoadCoins();
     }

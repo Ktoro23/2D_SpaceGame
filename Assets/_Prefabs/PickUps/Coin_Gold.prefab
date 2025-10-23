@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1877166409969131897}
   - component: {fileID: 1046670035482197255}
   - component: {fileID: 9209375726517971527}
+  - component: {fileID: -1724976201599244057}
   m_Layer: 0
   m_Name: Coin_Gold
   m_TagString: Untagged
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466337733160184106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7660e2fbb642a614b8db996e85adfed3, type: 3}
   m_Name: 
@@ -174,3 +175,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.12
+--- !u!114 &-1724976201599244057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466337733160184106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49ec30487e19bb40be8449f5d51ba1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: -2
+  pathType: 1
+  frequency: 2
+  amplitude: 1
