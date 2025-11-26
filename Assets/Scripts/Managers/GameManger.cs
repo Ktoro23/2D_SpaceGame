@@ -3,10 +3,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 public class GameManger : MonoBehaviour
 {
     public static GameManger Instance;
+
+    public GameObject[] powerUpPrefabs;
+    public float globalPowerUpDropChance = 0.15f;
 
     public float worldSpeed;
     public float adjustedworldSpeed;
@@ -38,6 +42,8 @@ public class GameManger : MonoBehaviour
         else
         {
             Instance = this;
+            DOTween.Init();
+            DontDestroyOnLoad(gameObject);
         }
 
         action = new InputSystem_Actions();

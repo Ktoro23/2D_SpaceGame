@@ -1,109 +1,98 @@
 using UnityEngine;
 
-// Define the different movement patterns for the coins.
-public enum CoinPathType
-{
-    Straight,     // Moves only horizontally (left)
-    SineVertical, // Moves horizontally and waves up/down (Y-axis)
-    SineDiagonal  // Moves horizontally and waves diagonally (X/Y-axis)
-}
-
-// This script manages the entire motion (scrolling and waving) of the coin, ignoring player boost.
+// This script controls the movement and wave pattern of the coin.
+// It is designed to ignore the player's full boost speed but slightly
+// accelerate with the world for an "organic" feel.
 public class CoinMovement : MonoBehaviour
 {
-    // --- Inspector Variables ---
+    // --- Wave Parameters (Set in Inspector) ---
+    [Header("Wave Settings")]
+    public PathType pathType = PathType.SineVertical;
+    public float frequency = 1f;   // How many waves appear (e.g., 1 is a smooth wave)
+    public float amplitude = 1.5f; // How wide the wave is
 
-    [Header("Movement Settings")]
-    [Tooltip("The multiplier for the base world speed. Keep at 1f unless you want coins slower/faster than the world.")]
-    [SerializeField] private float speedMultiplier = 1f;
+    // --- Organic Movement Parameters ---
+    [Header("Organic Motion")]
+    [Tooltip("The percentage of the player's boost speed the coin will inherit (e.g., 0.2 means 20%).")]
+    [Range(0f, 0.5f)]
+    public float boostInheritanceFactor = 0.2f; // Inherit 20% of the boost speed
 
-    [Tooltip("The chosen path type for this coin.")]
-    [SerializeField] private CoinPathType pathType = CoinPathType.SineVertical;
-
-    [Header("Sine Wave Settings")]
-    [Tooltip("How quickly the coin moves through the sine wave (frequency).")]
-    [SerializeField] private float frequency = 2f;
-
-    [Tooltip("How high/wide the wave pattern is (amplitude).")]
-    [SerializeField] private float amplitude = 1f;
-
-    // --- Private Variables ---
     private float timer;
-    private float initialY;
+    private float centerY;
     private float initialX;
+    private float totalTime;
 
-    // Variable to hold the CONSTANT world scroll speed.
-    private float baseWorldSpeed;
+    // --- World Speed Constants ---
+    private GameManger gameManager;
+
+    public enum PathType
+    {
+        Straight,
+        SineVertical,
+        SineDiagonal
+    }
 
     private void OnEnable()
     {
-        // Reset the timer and capture the initial position when the coin spawns.
-        timer = 0f;
-
-        // Ensure the coin's base position is captured when it's enabled/spawned.
-        initialY = transform.position.y;
+        // Reset state
+        timer = 0;
+        totalTime = 0;
         initialX = transform.position.x;
+        centerY = transform.position.y;
 
-        // Safety check to get the base world speed from the GameManager.
-        if (GameManger.Instance != null)
+        // Ensure GameManger reference
+        if (gameManager == null)
         {
-            // CRITICAL: Get the constant speed that NEVER changes with boost.
-            baseWorldSpeed = GameManger.Instance.baseScrollSpeed;
-        }
-        else
-        {
-            Debug.LogError("GameManger is not available. Coin movement may be incorrect.");
-            baseWorldSpeed = 5f; // Fallback speed
+            gameManager = GameManger.Instance;
         }
     }
 
     private void Update()
     {
-        // Increment the timer for the sine function.
-        timer += Time.deltaTime;
+        totalTime += Time.deltaTime;
 
-        // Calculate the CONSTANT horizontal movement using the base speed.
-        // This is the combined scrolling and speed multiplier.
-        // The coin is now scrolling left at a constant speed.
-        float scrollDeltaX = -1f * baseWorldSpeed * speedMultiplier * Time.deltaTime;
+        // --- 1. CALCULATE MOVEMENT SPEED ---
+        float baseSpeed = gameManager.baseScrollSpeed;
+        float adjustedSpeed = gameManager.worldSpeed;
 
-        float newX = transform.position.x + scrollDeltaX;
-        float newY = transform.position.y;
+        // Calculate the difference between the current world speed and the base speed (the boost effect)
+        float boostDifference = adjustedSpeed - baseSpeed;
 
-        // Calculate the wave position
-        float sine = Mathf.Sin(timer * frequency) * amplitude;
+        // Apply only a small percentage of the boost difference to the coin's movement
+        float finalScrollSpeed = baseSpeed + (boostDifference * boostInheritanceFactor);
 
-        // Apply wave based on the selected path type.
-        switch (pathType)
+        // Convert to distance per frame
+        float moveX = finalScrollSpeed * Time.deltaTime;
+
+
+        // --- 2. CALCULATE SINE WAVE (Vertical Component) ---
+        float sine = 0f;
+        if (pathType == PathType.SineVertical || pathType == PathType.SineDiagonal)
         {
-            case CoinPathType.Straight:
-                // Horizontal scroll is applied via newX calculation above.
-                // Y position remains constant.
-                break;
-
-            case CoinPathType.SineVertical:
-                // Wave is applied relative to the initial Y position.
-                newY = initialY + sine;
-                break;
-
-            case CoinPathType.SineDiagonal:
-                // Applies the sine to the X position for a diagonal effect
-                // We add the sine wave's oscillation to the newX calculation.
-                newX = transform.position.x + scrollDeltaX + sine * Time.deltaTime;
-
-                // Applies a smaller, timed sine wave to the Y position
-                newY = initialY + Mathf.Sin(timer * frequency + 1f) * (amplitude * 0.5f);
-                break;
+            // Use time for a continuous wave motion
+            sine = Mathf.Sin(totalTime * frequency) * amplitude;
         }
 
-        // Apply the final calculated position.
-        transform.position = new Vector3(newX, newY, transform.position.z);
+        // --- 3. APPLY POSITION ---
+        Vector3 newPosition = transform.position;
 
-        // Simple check to recycle the coin if it goes off-screen to the left.
-        if (transform.position.x < -10f)
+        // Apply horizontal movement (scrolling)
+        newPosition.x -= moveX;
+
+        // Apply vertical wave motion
+        newPosition.y = centerY + sine;
+
+        // If diagonal, slightly adjust the Y position based on horizontal progress
+        if (pathType == PathType.SineDiagonal)
         {
-            // Assuming you are using PoolHelper based on your other scripts.
-            // If not, replace this line with Destroy(gameObject);
+            newPosition.y += (initialX - newPosition.x) * 0.05f; // Small diagonal drift
+        }
+
+        transform.position = newPosition;
+
+        // Check if the coin is off-screen
+        if (transform.position.x < -11f)
+        {
             gameObject.SetActive(false);
         }
     }

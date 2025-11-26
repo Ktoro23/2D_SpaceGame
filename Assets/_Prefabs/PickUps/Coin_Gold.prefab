@@ -134,11 +134,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466337733160184106}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7660e2fbb642a614b8db996e85adfed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedmModifier: 2.5
 --- !u!58 &9209375726517971527
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -182,12 +183,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466337733160184106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e49ec30487e19bb40be8449f5d51ba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedX: -2
   pathType: 1
-  frequency: 2
-  amplitude: 1
+  frequency: 0.5
+  amplitude: 2
+  boostInheritanceFactor: 0.269

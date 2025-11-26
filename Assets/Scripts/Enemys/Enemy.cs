@@ -64,6 +64,7 @@ public class Enemy : MonoBehaviour
             PlayerMovement.Instance.GetExperience(experienceToGive);
             gameObject.SetActive(false);
             flashWhite.Rest();
+            PowerUpDropper.TryDropPowerUp(transform.position, GameManger.Instance.globalPowerUpDropChance, GameManger.Instance.powerUpPrefabs);     
 
         }
     }
